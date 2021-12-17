@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/workviewer.iml" filepath="$PROJECT_DIR$/workviewer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/workviewer-generator/workviewer-generator.iml" filepath="$PROJECT_DIR$/workviewer-generator/workviewer-generator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/workviewer-server/workviewer-server.iml" filepath="$PROJECT_DIR$/workviewer-server/workviewer-server.iml" />
+    </modules>
+  </component>
+</project>
