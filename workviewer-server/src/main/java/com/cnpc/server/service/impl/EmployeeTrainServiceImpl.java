@@ -1,8 +1,8 @@
 package com.cnpc.server.service.impl;
 
-import com.cnpc.pojo.EmployeeTrain;
-import com.cnpc.mapper.EmployeeTrainMapper;
-import com.cnpc.service.IEmployeeTrainService;
+import com.cnpc.server.pojo.EmployeeTrain;
+import com.cnpc.server.mapper.EmployeeTrainMapper;
+import com.cnpc.server.service.IEmployeeTrainService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

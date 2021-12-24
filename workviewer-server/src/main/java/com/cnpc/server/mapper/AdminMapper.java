@@ -2,6 +2,11 @@ package com.cnpc.server.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.cnpc.server.pojo.Admin;
+import com.cnpc.server.pojo.Menu;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>

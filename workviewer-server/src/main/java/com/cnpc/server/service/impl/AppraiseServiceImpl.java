@@ -1,8 +1,8 @@
 package com.cnpc.server.service.impl;
 
-import com.cnpc.pojo.Appraise;
-import com.cnpc.mapper.AppraiseMapper;
-import com.cnpc.service.IAppraiseService;
+import com.cnpc.server.pojo.Appraise;
+import com.cnpc.server.mapper.AppraiseMapper;
+import com.cnpc.server.service.IAppraiseService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

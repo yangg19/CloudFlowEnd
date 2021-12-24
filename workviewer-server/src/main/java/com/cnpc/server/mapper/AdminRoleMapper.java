@@ -2,6 +2,7 @@ package com.cnpc.server.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.cnpc.server.pojo.AdminRole;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>

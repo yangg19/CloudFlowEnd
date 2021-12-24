@@ -1,8 +1,8 @@
 package com.cnpc.server.service.impl;
 
-import com.cnpc.pojo.MenuRole;
-import com.cnpc.mapper.MenuRoleMapper;
-import com.cnpc.service.IMenuRoleService;
+import com.cnpc.server.pojo.MenuRole;
+import com.cnpc.server.mapper.MenuRoleMapper;
+import com.cnpc.server.service.IMenuRoleService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

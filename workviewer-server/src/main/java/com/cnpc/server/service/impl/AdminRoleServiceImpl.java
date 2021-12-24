@@ -1,8 +1,8 @@
 package com.cnpc.server.service.impl;
 
-import com.cnpc.pojo.AdminRole;
-import com.cnpc.mapper.AdminRoleMapper;
-import com.cnpc.service.IAdminRoleService;
+import com.cnpc.server.pojo.AdminRole;
+import com.cnpc.server.mapper.AdminRoleMapper;
+import com.cnpc.server.service.IAdminRoleService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

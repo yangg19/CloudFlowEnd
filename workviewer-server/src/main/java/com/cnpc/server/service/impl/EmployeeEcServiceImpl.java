@@ -1,8 +1,8 @@
 package com.cnpc.server.service.impl;
 
-import com.cnpc.pojo.EmployeeEc;
-import com.cnpc.mapper.EmployeeEcMapper;
-import com.cnpc.service.IEmployeeEcService;
+import com.cnpc.server.pojo.EmployeeEc;
+import com.cnpc.server.mapper.EmployeeEcMapper;
+import com.cnpc.server.service.IEmployeeEcService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

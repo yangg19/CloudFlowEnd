@@ -1,8 +1,8 @@
 package com.cnpc.server.service.impl;
 
-import com.cnpc.pojo.EmployeeRemove;
-import com.cnpc.mapper.EmployeeRemoveMapper;
-import com.cnpc.service.IEmployeeRemoveService;
+import com.cnpc.server.pojo.EmployeeRemove;
+import com.cnpc.server.mapper.EmployeeRemoveMapper;
+import com.cnpc.server.service.IEmployeeRemoveService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

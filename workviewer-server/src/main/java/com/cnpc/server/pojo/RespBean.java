@@ -5,8 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @Description: 公共返回对象
- * @ClassName: RespBean.java
+ * 公共返回对象
+ *
  * @Author: yangg19
  * @version: 1.0.0
  * @Date: 2021年12月17日 14:51:00
@@ -23,12 +23,14 @@ public class RespBean {
     private String message; // 提示信息
     private Object obj; // 对象
 
+
     /**
-     * @Description: 成功返回结果
-     * @Param: message
-     * @Author: yangg19
-     * @UpdateTime: 2021/12/17 14:55
+     * 成功返回结果
+     *
+     * @Params: [message]
      * @Return: com.cnpc.server.pojo.RespBean
+     * @Author: yangg19
+     * @UpdateTime: 2021/12/20 9:55
      * @Throws:
      */
     public static RespBean sucess(String message) {
@@ -36,12 +38,12 @@ public class RespBean {
     }
 
     /**
-     * @Description: 成功返回结果
-     * @Param: message
-     * @Param: obj
-     * @Author: yangg19
-     * @UpdateTime: 2021/12/17 14:56
+     * 成功返回结果
+     *
+     * @Params: [message, obj]
      * @Return: com.cnpc.server.pojo.RespBean
+     * @Author: yangg19
+     * @UpdateTime: 2021/12/20 9:56
      * @Throws:
      */
     public static RespBean sucess(String message, Object obj) {
@@ -50,11 +52,12 @@ public class RespBean {
 
 
     /**
-     * @Description: 失败返回结果
-     * @Param: message
-     * @Author: yangg19
-     * @UpdateTime: 2021/12/17 15:01
+     * 失败返回结果
+     *
+     * @Params: [message]
      * @Return: com.cnpc.server.pojo.RespBean
+     * @Author: yangg19
+     * @UpdateTime: 2021/12/20 9:56
      * @Throws:
      */
     public static RespBean error(String message) {
@@ -62,12 +65,12 @@ public class RespBean {
     }
 
     /**
-     * @Description: 失败返回结果
-     * @Param: message
-     * @Param: obj
-     * @Author: yangg19
-     * @UpdateTime: 2021/12/17 15:01
+     * 失败返回结果
+     *
+     * @Params: [message, obj]
      * @Return: com.cnpc.server.pojo.RespBean
+     * @Author: yangg19
+     * @UpdateTime: 2021/12/20 9:56
      * @Throws:
      */
     public static RespBean error(String message, Object obj) {

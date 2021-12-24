@@ -1,8 +1,8 @@
 package com.cnpc.server.service.impl;
 
-import com.cnpc.pojo.Salary;
-import com.cnpc.mapper.SalaryMapper;
-import com.cnpc.service.ISalaryService;
+import com.cnpc.server.pojo.Salary;
+import com.cnpc.server.mapper.SalaryMapper;
+import com.cnpc.server.service.ISalaryService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

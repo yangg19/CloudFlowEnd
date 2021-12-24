@@ -1,8 +1,8 @@
 package com.cnpc.server.service.impl;
 
-import com.cnpc.pojo.Oplog;
-import com.cnpc.mapper.OplogMapper;
-import com.cnpc.service.IOplogService;
+import com.cnpc.server.pojo.Oplog;
+import com.cnpc.server.mapper.OplogMapper;
+import com.cnpc.server.service.IOplogService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

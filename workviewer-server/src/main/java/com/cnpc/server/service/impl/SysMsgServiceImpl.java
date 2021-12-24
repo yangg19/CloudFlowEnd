@@ -1,8 +1,8 @@
 package com.cnpc.server.service.impl;
 
-import com.cnpc.pojo.SysMsg;
-import com.cnpc.mapper.SysMsgMapper;
-import com.cnpc.service.ISysMsgService;
+import com.cnpc.server.pojo.SysMsg;
+import com.cnpc.server.mapper.SysMsgMapper;
+import com.cnpc.server.service.ISysMsgService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

@@ -1,8 +1,8 @@
 package com.cnpc.server.service.impl;
 
-import com.cnpc.pojo.PoliticsStatus;
-import com.cnpc.mapper.PoliticsStatusMapper;
-import com.cnpc.service.IPoliticsStatusService;
+import com.cnpc.server.pojo.PoliticsStatus;
+import com.cnpc.server.mapper.PoliticsStatusMapper;
+import com.cnpc.server.service.IPoliticsStatusService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

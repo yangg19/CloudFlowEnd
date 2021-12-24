@@ -1,8 +1,8 @@
 package com.cnpc.server.service.impl;
 
-import com.cnpc.pojo.Nation;
-import com.cnpc.mapper.NationMapper;
-import com.cnpc.service.INationService;
+import com.cnpc.server.pojo.Nation;
+import com.cnpc.server.mapper.NationMapper;
+import com.cnpc.server.service.INationService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

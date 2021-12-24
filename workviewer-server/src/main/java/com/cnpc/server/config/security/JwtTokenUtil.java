@@ -10,8 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @Description: JwtToken工具类
- * @ClassName: JwtTokenUtil
+ * JwtToken工具类
+ *
  * @Author: yangg19
  * @Date: 2021/12/3 4:41 下午
  * @Version 1.0
@@ -35,11 +35,12 @@ public class JwtTokenUtil {
     private Long expiration;
 
     /**
-     * @Description: 根据用户信息生成TOKEN
-     * @Param: userDetails
-     * @Author: yangg19
-     * @UpdateTime: 2021/12/17 13:13
+     * 根据用户信息生成TOKEN
+     *
+     * @Params: [userDetails]
      * @Return: java.lang.String
+     * @Author: yangg19
+     * @UpdateTime: 2021/12/20 9:50
      * @Throws:
      */
     public String generateToken(UserDetails userDetails) {
@@ -53,11 +54,12 @@ public class JwtTokenUtil {
     }
 
     /**
-     * @Description: 从token中获取登录用户名
-     * @Param: token
-     * @Author: yangg19
-     * @UpdateTime: 2021/12/17 13:13
+     * 从token中获取登录用户名
+     *
+     * @Params: [token]
      * @Return: java.lang.String
+     * @Author: yangg19
+     * @UpdateTime: 2021/12/20 9:54
      * @Throws:
      */
     public String getUserNameFromToken(String token) {
@@ -73,12 +75,12 @@ public class JwtTokenUtil {
     }
 
     /**
-     * @Description: 验证token是否有效
-     * @Param: token
-     * @Param: userDetails
-     * @Author: yangg19
-     * @UpdateTime: 2021/12/17 11:03
+     * 验证token是否有效
+     *
+     * @Params: [token, userDetails]
      * @Return: boolean
+     * @Author: yangg19
+     * @UpdateTime: 2021/12/20 9:54
      * @Throws:
      */
     public boolean validateToken(String token, UserDetails userDetails) {
@@ -87,11 +89,12 @@ public class JwtTokenUtil {
     }
 
     /**
-     * @Description: 判断token是否可以刷新
-     * @Param: token
-     * @Author: yangg19
-     * @UpdateTime: 2021/12/17 13:25
+     * 判断token是否可以刷新
+     *
+     * @Params: [token]
      * @Return: boolean
+     * @Author: yangg19
+     * @UpdateTime: 2021/12/20 9:54
      * @Throws:
      */
     public boolean canRefresh(String token) {
@@ -99,11 +102,12 @@ public class JwtTokenUtil {
     }
 
     /**
-     * @Description: 刷新token
-     * @Param: token
-     * @Author: yangg19
-     * @UpdateTime: 2021/12/17 13:28
+     * 刷新token
+     *
+     * @Params: [token]
      * @Return: java.lang.String
+     * @Author: yangg19
+     * @UpdateTime: 2021/12/20 9:55
      * @Throws:
      */
     public String refreshToken(String token) {
@@ -113,12 +117,13 @@ public class JwtTokenUtil {
     }
 
     /**
-     * @description: 判断token是否失效
-     * @param: token
-     * @author: yangg19
-     * @updateTime: 2021/12/17 10:40
-     * @return: boolean
-     * @throws:
+     * 判断token是否失效
+     *
+     * @Params: [token]
+     * @Return: boolean
+     * @Author: yangg19
+     * @UpdateTime: 2021/12/20 9:55
+     * @Throws:
      */
 
     private boolean isTokenExpired(String token) {
@@ -127,12 +132,13 @@ public class JwtTokenUtil {
     }
 
     /**
-     * @description: 从token中获取失效时间
-     * @param: token
-     * @author: yangg19
-     * @updateTime: 2021/12/17 10:41
-     * @return: java.util.Date
-     * @throws:
+     * 从token中获取失效时间
+     *
+     * @Params: [token]
+     * @Return: java.util.Date
+     * @Author: yangg19
+     * @UpdateTime: 2021/12/20 9:55
+     * @Throws:
      */
     private Date getExpiredDataFromToken(String token) {
 
@@ -142,12 +148,13 @@ public class JwtTokenUtil {
 
 
     /**
-     * @description: 从TOKEN中获取荷载
-     * @param: token
-     * @author: yangg19
-     * @updateTime: 2021/12/17 10:41
-     * @return: io.jsonwebtoken.Claims
-     * @throws:
+     * 从TOKEN中获取荷载
+     *
+     * @Params: [token]
+     * @Return: io.jsonwebtoken.Claims
+     * @Author: yangg19
+     * @UpdateTime: 2021/12/20 9:55
+     * @Throws:
      */
     private Claims getClaimsFromToken(String token) {
 
@@ -165,11 +172,12 @@ public class JwtTokenUtil {
     }
 
     /**
-     * @Description: 根据荷载生成JWT TOKEN
-     * @Param: claims
-     * @Author: yangg19
-     * @UpdateTime: 2021/12/17 13:14
+     * 根据荷载生成JWT TOKEN
+     *
+     * @Params: [claims]
      * @Return: java.lang.String
+     * @Author: yangg19
+     * @UpdateTime: 2021/12/20 9:55
      * @Throws:
      */
     private String generateToken(Map<String, Object> claims) {
@@ -177,16 +185,17 @@ public class JwtTokenUtil {
         return Jwts.builder()
                 .setClaims(claims)
                 .setExpiration(generateExpirationDate())
-                .signWith(SignatureAlgorithm.ES256, secret)
+                .signWith(SignatureAlgorithm.HS512, secret)
                 .compact();
     }
 
     /**
-     * @Description: 生成TOKEN失效时间
-     * @Params:
+     * 生成TOKEN失效时间
+     *
+     * @Params: []
+     * @Return: java.util.Date
      * @Author: yangg19
-     * @UpdateTime: 2021/12/17 10:50
-     * @Return:
+     * @UpdateTime: 2021/12/20 9:55
      * @Throws:
      */
 

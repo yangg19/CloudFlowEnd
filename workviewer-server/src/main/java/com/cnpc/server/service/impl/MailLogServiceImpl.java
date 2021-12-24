@@ -1,8 +1,8 @@
 package com.cnpc.server.service.impl;
 
-import com.cnpc.pojo.MailLog;
-import com.cnpc.mapper.MailLogMapper;
-import com.cnpc.service.IMailLogService;
+import com.cnpc.server.pojo.MailLog;
+import com.cnpc.server.mapper.MailLogMapper;
+import com.cnpc.server.service.IMailLogService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

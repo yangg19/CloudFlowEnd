@@ -1,8 +1,8 @@
 package com.cnpc.server.service.impl;
 
-import com.cnpc.pojo.Department;
-import com.cnpc.mapper.DepartmentMapper;
-import com.cnpc.service.IDepartmentService;
+import com.cnpc.server.pojo.Department;
+import com.cnpc.server.mapper.DepartmentMapper;
+import com.cnpc.server.service.IDepartmentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

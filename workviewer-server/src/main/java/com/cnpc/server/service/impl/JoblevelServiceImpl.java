@@ -1,8 +1,8 @@
 package com.cnpc.server.service.impl;
 
-import com.cnpc.pojo.Joblevel;
-import com.cnpc.mapper.JoblevelMapper;
-import com.cnpc.service.IJoblevelService;
+import com.cnpc.server.pojo.Joblevel;
+import com.cnpc.server.mapper.JoblevelMapper;
+import com.cnpc.server.service.IJoblevelService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

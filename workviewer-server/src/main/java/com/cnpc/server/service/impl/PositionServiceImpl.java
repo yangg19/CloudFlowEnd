@@ -1,8 +1,8 @@
 package com.cnpc.server.service.impl;
 
-import com.cnpc.pojo.Position;
-import com.cnpc.mapper.PositionMapper;
-import com.cnpc.service.IPositionService;
+import com.cnpc.server.pojo.Position;
+import com.cnpc.server.mapper.PositionMapper;
+import com.cnpc.server.service.IPositionService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

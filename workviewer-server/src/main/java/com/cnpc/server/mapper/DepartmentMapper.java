@@ -1,7 +1,7 @@
 package com.cnpc.server.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.cnpc.pojo.Department;
+import com.cnpc.server.pojo.Department;
 
 /**
  * <p>
