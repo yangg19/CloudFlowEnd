@@ -54,12 +54,14 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
      * @Throws:
      */
     @Override
-    public RespBean login(String username, String password, String code, HttpServletRequest request) {
-        // 验证码校验
-        String captcha = (String) request.getSession().getAttribute("captcha");
-        if (StringUtils.isEmpty(code) || !captcha.equalsIgnoreCase(code)) { // 忽略大小写
-            return RespBean.error("验证码输入错误，请重新输入");
-        }
+    public RespBean login(String username, String password, HttpServletRequest request) {
+//        public RespBean login(String username, String password, String code, HttpServletRequest request) {
+
+//        // 验证码校验
+//        String captcha = (String) request.getSession().getAttribute("captcha");
+//        if (StringUtils.isEmpty(code) || !captcha.equalsIgnoreCase(code)) { // 忽略大小写
+//            return RespBean.error("验证码输入错误，请重新输入");
+//        }
         // 通过用户名获取用户信息
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
         // 将用户输入的密码与用户信息对应的密码进行匹配，若用户信息为空或匹配失败则输入信息有误

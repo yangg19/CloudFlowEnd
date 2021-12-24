@@ -27,7 +27,9 @@ public interface IAdminService extends IService<Admin> {
      * @UpdateTime: 2021/12/20 10:15
      * @Throws:
      */
-    RespBean login(String username, String password, String code, HttpServletRequest request);
+//    RespBean login(String username, String password, String code, HttpServletRequest request);
+    RespBean login(String username, String password, HttpServletRequest request);
+
 
     /**
      * 根据用户名获取用户完整信息
