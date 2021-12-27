@@ -61,7 +61,7 @@ public class RespBean {
      * @Throws:
      */
     public static RespBean error(String message) {
-        return new RespBean(500, message,null);
+        return new RespBean(500, message, null);
     }
 
     /**
@@ -74,7 +74,7 @@ public class RespBean {
      * @Throws:
      */
     public static RespBean error(String message, Object obj) {
-        return new RespBean(500, message,obj);
+        return new RespBean(500, message, obj);
     }
 
 }

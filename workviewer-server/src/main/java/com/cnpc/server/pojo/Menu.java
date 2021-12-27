@@ -66,4 +66,8 @@ public class Menu implements Serializable {
     // mybatis-plus需要注解表字段中不存在该元素
     private List<Menu> children;
 
+    @ApiModelProperty(value = "角色列表")
+    @TableField(exist = false)
+    private List<Role> roles;
+
 }

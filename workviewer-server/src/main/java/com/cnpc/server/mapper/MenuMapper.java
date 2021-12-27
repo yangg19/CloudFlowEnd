@@ -25,4 +25,15 @@ public interface MenuMapper extends BaseMapper<Menu> {
      * @Throws:
      */
     List<Menu> getMenuListByAdminId(Integer id);
+
+    /**
+     * 根据角色获取菜单列表
+     *
+     * @Params: []
+     * @Return: java.util.List<com.cnpc.server.pojo.Menu>
+     * @Author: yangg19
+     * @UpdateTime: 2021/12/27 13:43
+     * @Throws:
+     */
+    List<Menu> getMenuListWithRole();
 }

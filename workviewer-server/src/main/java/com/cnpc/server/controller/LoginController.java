@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.cnpc.server.service.IAdminService;
+
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 
@@ -33,7 +34,7 @@ public class LoginController {
     @PostMapping("/login")
     public RespBean login(@RequestBody AdminLoginParam adminLoginParam, HttpServletRequest request) {
 //        return adminService.login(adminLoginParam.getUsername(), adminLoginParam.getPassword(), adminLoginParam.getCode(),request);
-        return adminService.login(adminLoginParam.getUsername(), adminLoginParam.getPassword(),request);
+        return adminService.login(adminLoginParam.getUsername(), adminLoginParam.getPassword(), request);
 
     }
 
@@ -41,7 +42,7 @@ public class LoginController {
     @GetMapping("/admin/info")
     // 登录之后，Spring Security当前登录对象已设置在全局，可以直接通过Principal对象获取当前登录对象
     public Admin getAdminInfo(Principal principal) {
-        if(null == principal) {
+        if (null == principal) {
             return null;
         }
         // 获取用户名
@@ -50,6 +51,8 @@ public class LoginController {
         Admin admin = adminService.getAdminByUsername(username);
         // 密码不可以返回给前端，防止用户信息泄露
         admin.setPassword(null);
+        // 返回用户角色信息
+        admin.setRoles(adminService.getRoles(admin.getId()));
         return admin;
     }
 

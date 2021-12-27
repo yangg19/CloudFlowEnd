@@ -2,6 +2,7 @@ package com.cnpc.server.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.cnpc.server.pojo.Menu;
+import com.cnpc.server.pojo.Role;
 
 import java.util.List;
 
@@ -25,4 +26,16 @@ public interface IMenuService extends IService<Menu> {
      * @Throws:
      */
     List<Menu> getMenuListByAdminId();
+    
+    
+    /**
+     * 根据角色获取菜单列表
+     *
+     * @Params: []
+     * @Return: java.util.List<com.cnpc.server.pojo.Menu>
+     * @Author: yangg19
+     * @UpdateTime: 2021/12/27 13:41 
+     * @Throws: 
+     */
+    List<Menu> getMenuListWithRole();
 }

@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.cnpc.server.pojo.Admin;
 import com.cnpc.server.pojo.Menu;
 import com.cnpc.server.pojo.RespBean;
+import com.cnpc.server.pojo.Role;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -42,4 +43,15 @@ public interface IAdminService extends IService<Admin> {
      */
     Admin getAdminByUsername(String username);
 
+
+    /**
+     * 根据用户id查询角色列表
+     *
+     * @Params: [adminId]
+     * @Return: java.util.List<com.cnpc.server.pojo.Role>
+     * @Author: yangg19
+     * @UpdateTime: 2021/12/27 15:16
+     * @Throws:
+     */
+    List<Role> getRoles(Integer adminId);
 }

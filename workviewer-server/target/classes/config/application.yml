@@ -31,13 +31,14 @@ spring:
     #超时时间
     timeout: 10000ms
     #服务器地址
-    host: 192.168.10.100
+    host: 127.0.0.1
     #服务器端口
     port: 6379
     #数据库
     database: 0
-    #密码
-    password: root
+    #密码 没有配置则不需要
+#    password: root
+    # 2.0后默认为lettuce客户端
     lettuce:
       pool:
         #最大连接数，默认8
@@ -78,8 +79,6 @@ mybatis-plus:
 logging:
   level:
     com.cnpc.server.mapper: debug
-
-
 
 jwt:
   # JWT存储的请求头
