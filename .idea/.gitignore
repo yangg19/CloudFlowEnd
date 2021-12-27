@@ -6,3 +6,19 @@
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
+/.
+/codeStyles/
+/dataSources/
+/inspectionProfiles/
+/libraries/
+/.gitignore
+/compiler.xml
+/dataSources.local.xml
+/dataSources.xml
+/encodings.xml
+/jarRepositories.xml
+/misc.xml
+/modules.xml
+/uiDesigner.xml
+/vcs.xml
+/workspace.xml
