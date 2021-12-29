@@ -3,6 +3,7 @@ package com.cnpc.server.service.impl;
 import com.cnpc.server.pojo.Admin;
 import com.cnpc.server.pojo.Menu;
 import com.cnpc.server.mapper.MenuMapper;
+import com.cnpc.server.pojo.Role;
 import com.cnpc.server.service.IMenuService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,5 +66,19 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
     @Override
     public List<Menu> getMenuListWithRole() {
         return menuMapper.getMenuListWithRole();
+    }
+
+    /**
+     * 查询所有菜单
+     *
+     * @Params: []
+     * @Return: java.util.List<com.cnpc.server.pojo.Role>
+     * @Author: yangg19
+     * @UpdateTime: 2021/12/29 13:20
+     * @Throws:
+     */
+    @Override
+    public List<Menu> getMenuList() {
+        return menuMapper.getMenuList();
     }
 }

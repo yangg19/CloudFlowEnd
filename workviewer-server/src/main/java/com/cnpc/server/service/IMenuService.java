@@ -38,4 +38,15 @@ public interface IMenuService extends IService<Menu> {
      * @Throws: 
      */
     List<Menu> getMenuListWithRole();
+
+    /**
+     * 查询所有菜单
+     *
+     * @Params: []
+     * @Return: java.util.List<com.cnpc.server.pojo.Role>
+     * @Author: yangg19
+     * @UpdateTime: 2021/12/29 13:20
+     * @Throws:
+     */
+    List<Menu> getMenuList();
 }
