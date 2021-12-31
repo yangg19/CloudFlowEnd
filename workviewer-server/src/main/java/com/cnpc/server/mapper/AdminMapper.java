@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.cnpc.server.pojo.Admin;
 import com.cnpc.server.pojo.Menu;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,4 +19,14 @@ import java.util.List;
  */
 public interface AdminMapper extends BaseMapper<Admin> {
 
+    /**
+     * 获取所有操作员
+     *
+     * @Params: [id, keywords]
+     * @Return: java.util.List<com.cnpc.server.pojo.Admin>
+     * @Author: yangg19
+     * @UpdateTime: 2021/12/31 10:04
+     * @Throws:
+     */
+    List<Admin> getAllAdmins(@Param("id") Integer id, @Param("keywords") String keywords);
 }

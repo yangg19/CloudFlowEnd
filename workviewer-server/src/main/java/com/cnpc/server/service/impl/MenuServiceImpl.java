@@ -1,5 +1,6 @@
 package com.cnpc.server.service.impl;
 
+import com.cnpc.server.AdminUtils;
 import com.cnpc.server.pojo.Admin;
 import com.cnpc.server.pojo.Menu;
 import com.cnpc.server.mapper.MenuMapper;
@@ -42,7 +43,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
      */
     @Override
     public List<Menu> getMenuListByAdminId() {
-        Integer adminId = ((Admin) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId();
+        Integer adminId = AdminUtils.getCurrentAdmin().getId();
         ValueOperations<String, Object> valueOperations = redisTemplate.opsForValue();
         // 从redis获取菜单数据，如果为空去数据库获取
         List<Menu> menulist = (List<Menu>) valueOperations.get("menu_" + adminId);

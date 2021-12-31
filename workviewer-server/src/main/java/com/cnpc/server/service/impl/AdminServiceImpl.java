@@ -1,10 +1,13 @@
 package com.cnpc.server.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.cnpc.server.AdminUtils;
 import com.cnpc.server.config.security.component.JwtTokenUtil;
 import com.cnpc.server.mapper.AdminMapper;
+import com.cnpc.server.mapper.AdminRoleMapper;
 import com.cnpc.server.mapper.RoleMapper;
 import com.cnpc.server.pojo.Admin;
+import com.cnpc.server.pojo.AdminRole;
 import com.cnpc.server.pojo.RespBean;
 import com.cnpc.server.pojo.Role;
 import com.cnpc.server.service.IAdminService;
@@ -17,11 +20,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static com.cnpc.server.AdminUtils.getCurrentAdmin;
 
 /**
  * <p>
@@ -41,6 +47,8 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
     private RoleMapper roleMapper;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private AdminRoleMapper adminRoleMapper;
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
     @Value("${jwt.tokenHead}")
@@ -112,6 +120,43 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
     @Override
     public List<Role> getRoles(Integer adminId) {
         return roleMapper.getRoles(adminId);
+    }
+
+    /**
+     * 获取所有操作员
+     *
+     * @Params: [keywords]
+     * @Return: java.util.List<com.cnpc.server.pojo.Admin>
+     * @Author: yangg19
+     * @UpdateTime: 2021/12/31 9:56
+     * @Throws:
+     */
+    @Override
+    public List<Admin> getAllAdmins(String keywords) {
+        // 不能查已登录的操作员信息
+        return adminMapper.getAllAdmins(AdminUtils.getCurrentAdmin().getId(), keywords);
+    }
+
+    /**
+     * 更新操作员角色
+     *
+     * @Params: [adminId, rids]
+     * @Return: com.cnpc.server.pojo.RespBean
+     * @Author: yangg19
+     * @UpdateTime: 2021/12/31 10:58
+     * @Throws:
+     */
+    @Override
+    @Transactional
+    public RespBean updateAdminRole(Integer adminId, Integer[] rids) {
+        // 先删除再添加
+        adminRoleMapper.delete(new QueryWrapper<AdminRole>().eq("adminId", adminId));
+        // 返回受影响的行数
+        Integer result = adminRoleMapper.addAdminRole(adminId, rids);
+        if(rids.length==result) {
+            return RespBean.sucess("更新成功！");
+        }
+        return RespBean.error("更新失败！");
     }
 
 }
