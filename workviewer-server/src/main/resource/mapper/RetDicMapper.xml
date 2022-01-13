@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cnpc.server.mapper.RetDicMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cnpc.server.pojo.RetDic">
+        <id column="id" property="id" />
+        <result column="dicType" property="dicType" />
+        <result column="dicTypeEN" property="dicTypeEN" />
+        <result column="dicValue" property="dicValue" />
+        <result column="dicValueSign" property="dicValueSign" />
+        <result column="represent" property="represent" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, dicType, dicTypeEN, dicValue, dicValueSign, represent
+    </sql>
+
+    <!--查询字典-->
+    <select id="getDicByPage" resultMap="BaseResultMap">
+        SELECT
+            d.*
+        FROM
+            ret_dic d
+        <where>
+            <if test="null!=retDic.dicType and ''!=retDic.dicType">
+                AND d.dicType LIKE CONCAT('%',#{retDic.dicType},'%')
+            </if>
+            <if test="null!=retDic.dicTypeEN and ''!=retDic.dicTypeEN">
+                AND d.dicTypeEN = #{retDic.dicTypeEN}
+            </if>
+            <if test="null!=retDic.dicValue and ''!=retDic.dicValue">
+                AND d.dicValue = #{retDic.dicValue}
+            </if>
+            <if test="null!=retDic.dicValueSign and ''!=retDic.dicValueSign">
+                AND d.dicValueSign = #{retDic.dicValueSign}
+            </if>
+            <if test="null!=beginDateScope and 2==beginDateScope.length">
+                AND d.beginDate = BETWEEN #{beginDateScope[0]} AND #{beginDateScope[1]}
+            </if>
+        </where>
+
+        ORDER BY d.id
+    </select>
+
+</mapper>

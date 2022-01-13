@@ -33,7 +33,7 @@ public class RespBean {
      * @UpdateTime: 2021/12/20 9:55
      * @Throws:
      */
-    public static RespBean sucess(String message) {
+    public static RespBean success(String message) {
         return new RespBean(200, message, null);
     }
 
@@ -46,7 +46,7 @@ public class RespBean {
      * @UpdateTime: 2021/12/20 9:56
      * @Throws:
      */
-    public static RespBean sucess(String message, Object obj) {
+    public static RespBean success(String message, Object obj) {
         return new RespBean(200, message, obj);
     }
 

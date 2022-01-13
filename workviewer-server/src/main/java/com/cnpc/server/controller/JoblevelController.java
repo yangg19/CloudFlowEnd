@@ -38,7 +38,7 @@ public class JoblevelController {
     public RespBean addJobLevel(@RequestBody Joblevel joblevel) {
         joblevel.setCreateDate(LocalDateTime.now());
         if (joblevelService.save(joblevel)) {
-            return RespBean.sucess("添加成功！");
+            return RespBean.success("添加成功！");
         }
         return RespBean.error("添加失败！");
     }
@@ -47,7 +47,7 @@ public class JoblevelController {
     @PutMapping("/")
     public RespBean updateJobLevel(@RequestBody Joblevel joblevel) {
         if (joblevelService.updateById(joblevel)) {
-            return RespBean.sucess("更新成功！");
+            return RespBean.success("更新成功！");
         }
         return RespBean.error("更新失败！");
     }
@@ -56,7 +56,7 @@ public class JoblevelController {
     @DeleteMapping("/{id}")
     public RespBean deleteJobLevel(@PathVariable Integer id) {
         if (joblevelService.removeById(id)) {
-            return RespBean.sucess("删除成功！");
+            return RespBean.success("删除成功！");
         }
         return RespBean.error("删除失败！");
     }
@@ -65,7 +65,7 @@ public class JoblevelController {
     @DeleteMapping("/")
     public RespBean deleteJobLevelByIds(Integer[] ids) {
         if (joblevelService.removeByIds(Arrays.asList(ids))) {
-            return RespBean.sucess("删除成功！");
+            return RespBean.success("删除成功！");
         }
         return RespBean.error("删除失败！");
     }

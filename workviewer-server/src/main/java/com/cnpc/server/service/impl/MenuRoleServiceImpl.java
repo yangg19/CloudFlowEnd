@@ -41,11 +41,11 @@ public class MenuRoleServiceImpl extends ServiceImpl<MenuRoleMapper, MenuRole> i
     public RespBean updateMenuRole(Integer rid, Integer[] mids) {
         menuRoleMapper.delete(new QueryWrapper<MenuRole>().eq("rid", rid));
         if (null == mids || 0 == mids.length) {
-            return RespBean.sucess("更新成功！");
+            return RespBean.success("更新成功！");
         }
         Integer result = menuRoleMapper.insertRecord(rid, mids);
         if (result == mids.length) {
-            return RespBean.sucess("更新成功！");
+            return RespBean.success("更新成功！");
         }
         return RespBean.error("更新失败！");
     }

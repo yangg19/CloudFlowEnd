@@ -40,7 +40,7 @@ public class AdminController {
     @PutMapping("/")
     public RespBean updataAdmin(@RequestBody Admin admin) {
         if (adminService.updateById(admin)) {
-            return RespBean.sucess("更新成功!");
+            return RespBean.success("更新成功!");
         }
         return RespBean.error("更新失败！");
     }
@@ -49,7 +49,7 @@ public class AdminController {
     @DeleteMapping("/{id}")
     public RespBean deleteAdmin(@PathVariable Integer id) {
         if (adminService.removeById(id)) {
-            return RespBean.sucess("删除成功!");
+            return RespBean.success("删除成功!");
         }
         return RespBean.error("删除失败！");
     }

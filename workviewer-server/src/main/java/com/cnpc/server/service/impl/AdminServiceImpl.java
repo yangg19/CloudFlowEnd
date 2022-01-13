@@ -90,7 +90,7 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
         Map<String, String> tokenMap = new HashMap<>();
         tokenMap.put("token", token);
         tokenMap.put("tokenHead", tokenHead);
-        return RespBean.sucess("登录成功", tokenMap);
+        return RespBean.success("登录成功", tokenMap);
     }
 
     /**
@@ -154,7 +154,7 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
         // 返回受影响的行数
         Integer result = adminRoleMapper.addAdminRole(adminId, rids);
         if(rids.length==result) {
-            return RespBean.sucess("更新成功！");
+            return RespBean.success("更新成功！");
         }
         return RespBean.error("更新失败！");
     }

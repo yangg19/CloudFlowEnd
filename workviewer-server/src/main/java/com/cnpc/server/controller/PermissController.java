@@ -48,7 +48,7 @@ public class PermissController {
             role.setName("ROLE_" + role.getName());
         }
         if (roleService.save(role)) {
-            return RespBean.sucess("添加成功！");
+            return RespBean.success("添加成功！");
         }
         return RespBean.error("添加失败！");
     }
@@ -57,7 +57,7 @@ public class PermissController {
     @DeleteMapping("/role/{rid}")
     public RespBean deleteRole(@PathVariable Integer rid) {
         if (roleService.removeById(rid)) {
-            return RespBean.sucess("删除成功！");
+            return RespBean.success("删除成功！");
         }
         return RespBean.error("删除失败！");
     }

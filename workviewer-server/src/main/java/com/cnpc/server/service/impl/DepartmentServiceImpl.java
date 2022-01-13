@@ -51,7 +51,7 @@ public class DepartmentServiceImpl extends ServiceImpl<DepartmentMapper, Departm
         dep.setEnabled(true);
         departmentMapper.addDep(dep);
         if (1==dep.getResult()) {
-            return RespBean.sucess("添加成功！", dep);
+            return RespBean.success("添加成功！", dep);
         }
         return RespBean.error("添加失败！");
     }
@@ -77,7 +77,7 @@ public class DepartmentServiceImpl extends ServiceImpl<DepartmentMapper, Departm
             return RespBean.error("该部门下还有员工，删除失败！");
         }
         if (1== dep.getResult()) {
-            return RespBean.sucess("删除成功！");
+            return RespBean.success("删除成功！");
         }
         return RespBean.error("删除失败！");
     }

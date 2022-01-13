@@ -32,5 +32,6 @@
       <option name="IGNORE_POINT_TO_ITSELF" value="false" />
       <option name="myAdditionalJavadocTags" value="description:,author:,updateTime:,throws:,param:,return:,Description:,Params:,Author:,UpdateTime:,Return:,Throws:,Param:,ClassName:,Date:,Version,功能描述:,version:" />
     </inspection_tool>
+    <inspection_tool class="SpringJavaInjectionPointsAutowiringInspection" enabled="false" level="ERROR" enabled_by_default="false" />
   </profile>
 </component>

@@ -37,7 +37,7 @@ public class PositionController {
     public RespBean addPosition(@RequestBody Position position) {
         position.setCreateDate(LocalDateTime.now());
         if (positionService.save(position)) {
-            return RespBean.sucess("添加成功！");
+            return RespBean.success("添加成功！");
         }
         return RespBean.error("添加失败！");
     }
@@ -46,7 +46,7 @@ public class PositionController {
     @PutMapping("/")
     public RespBean updatePosition(@RequestBody Position position) {
         if (positionService.updateById(position)) {
-            return RespBean.sucess("更新成功！");
+            return RespBean.success("更新成功！");
         }
         return RespBean.error("更新失败！");
     }
@@ -55,7 +55,7 @@ public class PositionController {
     @DeleteMapping("/{id}")
     public RespBean deletePosition(@PathVariable Integer id) {
         if (positionService.removeById(id)) {
-            return RespBean.sucess("删除成功！");
+            return RespBean.success("删除成功！");
         }
         return RespBean.error("删除失败！");
     }
@@ -64,7 +64,7 @@ public class PositionController {
     @DeleteMapping("/")
     public RespBean deletePositionByIds(Integer[] ids) {
         if (positionService.removeByIds(Arrays.asList(ids))) {
-            return RespBean.sucess("删除成功！");
+            return RespBean.success("删除成功！");
         }
         return RespBean.error("删除失败！");
     }
