@@ -92,4 +92,18 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
         }
         return RespBean.error("添加失败！");
     }
+
+    /**
+     * 查询员工
+     *
+     * @Params: [id]
+     * @Return: java.util.List<com.cnpc.server.pojo.Employee>
+     * @Author: yangg19
+     * @UpdateTime: 2022/1/14 14:45
+     * @Throws:
+     */
+    @Override
+    public List<Employee> getEmployee(Integer id) {
+        return employeeMapper.getEmployee(id);
+    }
 }

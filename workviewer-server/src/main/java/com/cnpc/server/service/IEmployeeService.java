@@ -6,6 +6,7 @@ import com.cnpc.server.pojo.RespBean;
 import com.cnpc.server.pojo.RespPageBean;
 
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * <p>
@@ -48,4 +49,16 @@ public interface IEmployeeService extends IService<Employee> {
      * @Throws:
      */
     RespBean addEmp(Employee employee);
+
+
+    /**
+     * 查询员工
+     *
+     * @Params: [id]
+     * @Return: java.util.List<com.cnpc.server.pojo.Employee>
+     * @Author: yangg19
+     * @UpdateTime: 2022/1/14 14:45
+     * @Throws:
+     */
+    List<Employee> getEmployee(Integer id);
 }

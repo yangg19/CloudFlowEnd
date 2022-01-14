@@ -92,8 +92,12 @@
             <artifactId>spring-tx</artifactId>
             <version>5.3.7</version>
         </dependency>
-
-
+        <!--EASYPOI依赖-->
+        <dependency>
+            <groupId>cn.afterturn</groupId>
+            <artifactId>easypoi-spring-boot-starter</artifactId>
+            <version>4.2.0</version>
+        </dependency>
     </dependencies>
 
     <build>
