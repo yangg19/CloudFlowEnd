@@ -1,0 +1,12 @@
+INSERT INTO `ret_dic`(`id`, `dicType`, `dicTypeEN`, `dicValue`, `dicValueSign`, `represent`) VALUES (1, '申请类型', 'APP_TYPE', '1', '授信', NULL);
+INSERT INTO `ret_dic`(`id`, `dicType`, `dicTypeEN`, `dicValue`, `dicValueSign`, `represent`) VALUES (2, '申请类型', 'APP_TYPE', '2', '支用', '');
+INSERT INTO `ret_dic`(`id`, `dicType`, `dicTypeEN`, `dicValue`, `dicValueSign`, `represent`) VALUES (3, '申请类型', 'APP_TYPE', '3', '授信+支用', NULL);
+INSERT INTO `ret_dic`(`id`, `dicType`, `dicTypeEN`, `dicValue`, `dicValueSign`, `represent`) VALUES (4, '申请类型', 'APP_TYPE', '4', '单笔支用', NULL);
+INSERT INTO `ret_dic`(`id`, `dicType`, `dicTypeEN`, `dicValue`, `dicValueSign`, `represent`) VALUES (5, '申请类型', 'APP_TYPE', '5', '授信复审', NULL);
+INSERT INTO `ret_dic`(`id`, `dicType`, `dicTypeEN`, `dicValue`, `dicValueSign`, `represent`) VALUES (6, '申请类型', 'APP_TYPE', '6', '授信预申请', '');
+INSERT INTO `ret_dic`(`id`, `dicType`, `dicTypeEN`, `dicValue`, `dicValueSign`, `represent`) VALUES (7, '申请类型', 'APP_TYPE', '7', '单笔支用预申请', '');
+INSERT INTO `ret_dic`(`id`, `dicType`, `dicTypeEN`, `dicValue`, `dicValueSign`, `represent`) VALUES (8, '申请类型', 'APP_TYPE', '8', '联合贷款初审', '');
+INSERT INTO `ret_dic`(`id`, `dicType`, `dicTypeEN`, `dicValue`, `dicValueSign`, `represent`) VALUES (9, '申请类型', 'APP_TYPE', '9', '联合贷款终审', '');
+INSERT INTO `ret_dic`(`id`, `dicType`, `dicTypeEN`, `dicValue`, `dicValueSign`, `represent`) VALUES (10, '申请类型', 'APP_TYPE', 'a', '预筛选', '');
+INSERT INTO `ret_dic`(`id`, `dicType`, `dicTypeEN`, `dicValue`, `dicValueSign`, `represent`) VALUES (11, '审批状态', 'APP_STATUS', '001', '审批中', NULL);
+INSERT INTO `ret_dic`(`id`, `dicType`, `dicTypeEN`, `dicValue`, `dicValueSign`, `represent`) VALUES (12, '经营实力等级', 'OPERATPOR_POWER_RANK', 'AAAA', 'AAAA', NULL);
