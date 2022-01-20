@@ -38,7 +38,7 @@ public class AdminController {
 
     @ApiOperation(value = "更新操作员")
     @PutMapping("/")
-    public RespBean updataAdmin(@RequestBody Admin admin) {
+    public RespBean updateAdmin(@RequestBody Admin admin) {
         if (adminService.updateById(admin)) {
             return RespBean.success("更新成功!");
         }

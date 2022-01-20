@@ -113,8 +113,8 @@
           <if test="null!=employee.departmentId and ''!=employee.departmentId">
               AND e.departmentId = #{employee.departmentId}
           </if>
-          <if test="null!=beginDateScope and 2==beginDateScope.length">
-              AND e.beginDate = BETWEEN #{beginDateScope[0]} AND #{beginDateScope[1]}
+          <if test="null != beginDateScope and 2 == beginDateScope.length">
+              AND e.beginDate between #{beginDateScope[0]} and #{beginDateScope[1]}
           </if>
           ORDER BY e.id
     </select>

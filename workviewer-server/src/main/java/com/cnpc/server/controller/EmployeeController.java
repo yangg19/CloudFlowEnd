@@ -117,27 +117,26 @@ public class EmployeeController {
     }
 
     @ApiOperation(value = "导出员工数据")
-    @GetMapping(value = "/export", produces = "application/octet-stream")
-    public void exportEmployee(HttpServletResponse response) {
-        List<Employee> list = employeeService.getEmployee(null);// 导出所有
-        // HSSF 03版，兼容性好一点； 还有一个 07 版的
-        ExportParams params = new ExportParams("员工表", "员工表", ExcelType.HSSF);
-        // 导出工具类
-        Workbook workbook = ExcelExportUtil.exportExcel(params, Employee.class, list);
-        ServletOutputStream out = null;
+    @GetMapping(value = "/export",produces = "application/octet-stream")
+    public void exportEmployee(HttpServletResponse response){
+        List<Employee> list = employeeService.getEmployee(null);
+        ExportParams params = new ExportParams("员工表","员工表", ExcelType.HSSF);
+        Workbook workbook = ExcelExportUtil.exportExcel(params,Employee.class,list);
+        ServletOutputStream outputStream = null;
         try {
-            // 流形式导出
-            response.setHeader("content-type", "application/octet-stream");
-            // 防止中文乱码
-            response.setHeader("content-disposition", "attachment;filename=" + URLEncoder.encode("员工表.xls", "UTF-8"));
-            out = response.getOutputStream();
-            workbook.write(out);
-        } catch (IOException e) {
+            //流形式
+            response.setHeader("content-type","application/octet-stream");
+            //中文乱码
+            response.setHeader("content-disposition","attachment;filename="+ URLEncoder.encode("员工表.xls","UTF-8"));
+            outputStream = response.getOutputStream();
+            workbook.write(outputStream);
+        } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            if (null != out) {
+        }finally {
+            if (null != outputStream){
                 try {
-                    out.close();
+                    outputStream.flush();
+                    outputStream.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

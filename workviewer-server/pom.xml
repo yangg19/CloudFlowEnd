@@ -98,6 +98,13 @@
             <artifactId>easypoi-spring-boot-starter</artifactId>
             <version>4.2.0</version>
         </dependency>
+        <!--&lt;!&ndash;FastDFS依赖&ndash;&gt;-->
+        <!--<dependency>-->
+        <!--    <groupId>org.csourse</groupId>-->
+        <!--    <artifactId>fastdfs-client-ja
+        va</artifactId>-->
+        <!--    <version>1.29-SNAPSHOT</version>-->
+        <!--</dependency>-->
     </dependencies>
 
     <build>

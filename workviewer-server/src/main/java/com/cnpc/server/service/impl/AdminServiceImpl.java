@@ -18,6 +18,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -159,4 +160,28 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
         return RespBean.error("更新失败！");
     }
 
+    /**
+     * 更新用户密码
+     *
+     * @Params: [oldPass, pass, adminId]
+     * @Return: com.cnpc.server.pojo.RespBean
+     * @Author: yangg19
+     * @UpdateTime: 2022/1/19 16:21
+     * @Throws:
+     */
+    @Override
+    public RespBean updateAdminPassword(String oldPass, String pass, Integer adminId) {
+        Admin admin = adminMapper.selectById(adminId);
+        // 密码加密
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        if (encoder.matches(oldPass, admin.getPassword())) {
+            admin.setPassword(encoder.encode(pass));
+            int result = adminMapper.updateById(admin);
+            if(1==result) {
+                return RespBean.success("修改成功！");
+            }
+        }
+
+        return RespBean.error("旧密码不正确，请重新输入！");
+    }
 }

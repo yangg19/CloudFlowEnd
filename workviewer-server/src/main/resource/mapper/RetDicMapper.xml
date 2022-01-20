@@ -6,15 +6,14 @@
     <resultMap id="BaseResultMap" type="com.cnpc.server.pojo.RetDic">
         <id column="id" property="id" />
         <result column="dicType" property="dicType" />
-        <result column="dicTypeEN" property="dicTypeEN" />
+        <result column="dicTypeName" property="dicTypeName" />
         <result column="dicValue" property="dicValue" />
-        <result column="dicValueSign" property="dicValueSign" />
-        <result column="represent" property="represent" />
+        <result column="dicValueName" property="dicValueName" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, dicType, dicTypeEN, dicValue, dicValueSign, represent
+        id, dicType, dicTypeName, dicValue, dicValueName
     </sql>
 
     <!--查询字典-->
@@ -24,17 +23,17 @@
         FROM
             ret_dic d
         <where>
-            <if test="null!=retDic.dicType and ''!=retDic.dicType">
-                AND d.dicType LIKE CONCAT('%',#{retDic.dicType},'%')
+            <if test="null!=retDic.dicTypeName and ''!=retDic.dicTypeName">
+                AND d.dicTypeName LIKE CONCAT('%',#{retDic.dicTypeName},'%')
             </if>
-            <if test="null!=retDic.dicTypeEN and ''!=retDic.dicTypeEN">
-                AND d.dicTypeEN = #{retDic.dicTypeEN}
+            <if test="null!=retDic.dicType and ''!=retDic.dicType">
+                AND d.dicType = #{retDic.dicType}
             </if>
             <if test="null!=retDic.dicValue and ''!=retDic.dicValue">
                 AND d.dicValue = #{retDic.dicValue}
             </if>
-            <if test="null!=retDic.dicValueSign and ''!=retDic.dicValueSign">
-                AND d.dicValueSign = #{retDic.dicValueSign}
+            <if test="null!=retDic.dicValueName and ''!=retDic.dicValueName">
+                AND d.dicValueName = #{dicValueName}
             </if>
             <if test="null!=beginDateScope and 2==beginDateScope.length">
                 AND d.beginDate = BETWEEN #{beginDateScope[0]} AND #{beginDateScope[1]}
