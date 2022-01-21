@@ -9,6 +9,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Map;
@@ -56,4 +57,9 @@ public class AdminInfoController {
         return adminService.updateAdminPassword(oldPass, pass, adminId);
 
     }
+
+//    @ApiOperation(value = "更新用户头像")
+//    public RespBean updateAdminUserFace(MultipartFile file, Integer id, Authentication authentication) {
+//        Fast
+//    }
 }

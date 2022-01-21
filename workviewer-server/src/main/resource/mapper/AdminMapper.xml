@@ -16,6 +16,9 @@
         <result column="remark" property="remark" />
         <result column="birthday" property="birthday" />
         <result column="workID" property="workID" />
+        <result column="email" property="email" />
+        <result column="workGroup" property="workGroup" />
+
     </resultMap>
 
     <resultMap id="AdminWithRole" type="com.cnpc.server.pojo.Admin" extends="BaseResultMap">

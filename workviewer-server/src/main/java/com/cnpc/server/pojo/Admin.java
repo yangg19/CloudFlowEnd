@@ -77,6 +77,12 @@ public class Admin implements Serializable, UserDetails {
     @ApiModelProperty(value = "工号")
     private Integer workID;
 
+    @ApiModelProperty(value = "邮箱")
+    private String email;
+
+    @ApiModelProperty(value = "组别")
+    private String workGroup;
+
     @ApiModelProperty(value = "角色")
     @TableField(exist = false)
     private List<Role> roles;
