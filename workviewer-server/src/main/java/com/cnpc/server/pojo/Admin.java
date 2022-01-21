@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author yangg19
@@ -70,6 +70,12 @@ public class Admin implements Serializable, UserDetails {
 
     @ApiModelProperty(value = "备注")
     private String remark;
+
+    @ApiModelProperty(value = "出生日期")
+    private String birthday;
+
+    @ApiModelProperty(value = "工号")
+    private Integer workID;
 
     @ApiModelProperty(value = "角色")
     @TableField(exist = false)
