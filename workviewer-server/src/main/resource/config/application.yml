@@ -6,9 +6,9 @@ spring:
   # 数据源配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/cloudflow?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/teampark?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     username: root
-    password: 931017
+    password: Pys931017@
     hikari:
       # 连接池名
       pool-name: DateHikariCP

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cnpc.server.mapper.TodolistMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cnpc.server.pojo.Todolist">
+        <id column="id" property="id" />
+        <result column="userID" property="userID" />
+        <result column="todoTask" property="todoTask" />
+        <result column="taskScore" property="taskScore" />
+        <result column="postCount" property="postCount" />
+        <result column="planTime" property="planTime" />
+        <result column="taskStatus" property="taskStatus" />
+
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, userID, todoTask, taskScore, postCount, planTime, taskStatus
+    </sql>
+
+    <!--查询字典-->
+    <select id="getTodolistByPage" resultMap="BaseResultMap">
+        SELECT
+        t.*
+        FROM
+        todolist t
+        ORDER BY t.planTime
+    </select>
+
+</mapper>
