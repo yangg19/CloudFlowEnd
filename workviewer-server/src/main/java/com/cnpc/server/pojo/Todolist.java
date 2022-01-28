@@ -10,6 +10,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -45,11 +46,15 @@ public class Todolist implements Serializable {
     private Integer postCount;
 
     @ApiModelProperty(value = "待办状态")
-    private String taskStatus;
+    private String taskStatusID;
+
+    @ApiModelProperty(value = "是否进行")
+    private String tagColor;
+
+    @ApiModelProperty(value = "待办详情")
+    private String taskDetails;
 
     @ApiModelProperty(value = "计划时间")
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
-    private LocalDateTime planTime;
-
-
+    private LocalDate planTime;
 }

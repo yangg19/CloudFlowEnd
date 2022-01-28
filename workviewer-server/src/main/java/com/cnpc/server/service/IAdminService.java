@@ -87,4 +87,15 @@ public interface IAdminService extends IService<Admin> {
      * @Throws:
      */
     RespBean updateAdminPassword(String oldPass, String pass, Integer adminId);
+
+    /**
+     * 获取所有用户
+     *
+     * @Params: [keywords]
+     * @Return: java.util.List<com.cnpc.server.pojo.Admin>
+     * @Author: yangg19
+     * @UpdateTime: 2022/1/27 11:20
+     * @Throws:
+     */
+    List<Admin> getAllAdmin(String keywords);
 }

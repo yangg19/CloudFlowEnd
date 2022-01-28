@@ -184,4 +184,18 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
 
         return RespBean.error("旧密码不正确，请重新输入！");
     }
+
+    /**
+     * 获取所有员工
+     *
+     * @Params: [keywords]
+     * @Return: java.util.List<com.cnpc.server.pojo.Admin>
+     * @Author: yangg19
+     * @UpdateTime: 2022/1/27 11:20
+     * @Throws:
+     */
+    @Override
+    public List<Admin> getAllAdmin(String keywords) {
+        return adminMapper.getAllAdmin(keywords);
+    }
 }

@@ -10,22 +10,61 @@
         <result column="taskScore" property="taskScore" />
         <result column="postCount" property="postCount" />
         <result column="planTime" property="planTime" />
-        <result column="taskStatus" property="taskStatus" />
+        <result column="taskStatusID" property="taskStatusID" />
+        <result column="tagColor" property="tagColor" />
+        <result column="taskDetails" property="taskDetails" />
 
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, userID, todoTask, taskScore, postCount, planTime, taskStatus
+        id, userID, todoTask, taskScore, postCount, planTime, taskStatusID, tagColor, taskDetails
     </sql>
 
-    <!--查询字典-->
+    <!--查询完成或删除待办-->
     <select id="getTodolistByPage" resultMap="BaseResultMap">
         SELECT
         t.*
         FROM
         todolist t
+        WHERE
+            userID = #{userID}
+        AND
+            taskStatusID = #{taskStatusID}
         ORDER BY t.planTime
     </select>
+
+    <!--查询新建/进行中/逾期待办-->
+    <select id="getInitTodolistByPage" resultMap="BaseResultMap">
+        SELECT
+            t.*
+        FROM
+            todolist t
+        WHERE
+            userID = #{userID}
+          AND
+            taskStatusID = '新建'
+          OR
+            taskStatusID = '进行中'
+          OR
+            taskStatusID = '逾期'
+        ORDER BY t.taskStatusID DESC, t.planTime
+    </select>
+
+    <!--完成待办-->
+    <update id="comTaskById" statementType="CALLABLE">
+        UPDATE todolist
+        SET taskStatusID = '完成'
+        WHERE
+            id = #{id}
+    </update>
+
+    <!--删除待办-->
+    <update id="deleteTaskById" statementType="CALLABLE">
+        UPDATE todolist
+        SET taskStatusID = '删除'
+        WHERE
+            id = #{id}
+    </update>
 
 </mapper>

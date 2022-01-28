@@ -29,14 +29,13 @@ public class AdminInfoController {
     @Autowired
     private IAdminService adminService;
 
-//    @Autowired
-//    private IRoleService roleService;
-//
-//    @ApiOperation(value = "获取所有操作员")
-//    @GetMapping("/")
-//    public List<Admin> getAllAdmin(String keywords) {
-//        return adminService.getAllAdmins(keywords);
-//    }
+    //TODO 调试
+
+    @ApiOperation(value = "获取所有用户")
+    @GetMapping("/")
+    public List<Admin> getAllAdmin(String keywords) {
+        return adminService.getAllAdmin(keywords);
+    }
 
     @ApiOperation(value = "更新当前用户信息")
     @PutMapping("/info")

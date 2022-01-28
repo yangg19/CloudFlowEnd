@@ -137,13 +137,11 @@ public class Employee implements Serializable {
     private LocalDate notWorkDate;
 
     @ApiModelProperty(value = "合同起始日期")
-//    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     @Excel(name = "合同起始日期",format = "yyyy-MM-dd",width = 20)
     private LocalDate beginContract;
 
     @ApiModelProperty(value = "合同终止日期")
-//    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     @Excel(name = "合同终止日期",format = "yyyy-MM-dd",width = 20)
     private LocalDate endContract;

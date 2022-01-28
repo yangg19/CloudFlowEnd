@@ -29,4 +29,15 @@ public interface AdminMapper extends BaseMapper<Admin> {
      * @Throws:
      */
     List<Admin> getAllAdmins(@Param("id") Integer id, @Param("keywords") String keywords);
+
+    /**
+     * 获取所有员工
+     *
+     * @Params: [keywords]
+     * @Return: java.util.List<com.cnpc.server.pojo.Admin>
+     * @Author: yangg19
+     * @UpdateTime: 2022/1/27 11:21
+     * @Throws:
+     */
+    List<Admin> getAllAdmin(@Param("keywords") String keywords);
 }

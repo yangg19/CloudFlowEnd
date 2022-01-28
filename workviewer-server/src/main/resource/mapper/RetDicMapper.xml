@@ -40,7 +40,7 @@
             </if>
         </where>
 
-        ORDER BY d.id
+        ORDER BY d.dicType, d.dicValue
     </select>
 
 </mapper>

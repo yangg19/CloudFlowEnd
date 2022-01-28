@@ -24,13 +24,21 @@ public class TodolistController {
     @Autowired
     private ITodolistService todolistService;
 
-    @ApiOperation(value = "查询待办")
+    @ApiOperation(value = "查询新建/进行中/逾期待办")
     @GetMapping("/")
-    public RespPageBean getTodolistInfo(@RequestParam(defaultValue = "1") Integer currentPage,
+    public RespPageBean getInitTodolistInfo(@RequestParam(defaultValue = "1") Integer currentPage,
                                    @RequestParam(defaultValue = "10") Integer size,
-                                   Todolist todolist,
                                    LocalDate[] beginDateScope) {
-        return todolistService.getTodolistByPage(currentPage, size, todolist, beginDateScope);
+        return todolistService.getInitTodolistByPage(currentPage, size, beginDateScope);
+    }
+
+    @ApiOperation(value = "查询完成或删除待办")
+    @GetMapping("/query")
+    public RespPageBean getTodolistInfo(@RequestParam(defaultValue = "1") Integer currentPage,
+                                        @RequestParam(defaultValue = "10") Integer size,
+                                        @RequestParam String taskStatusID,
+                                        LocalDate[] beginDateScope) {
+        return todolistService.getTodolistByPage(currentPage, size, taskStatusID, beginDateScope);
     }
 
     @ApiOperation(value = "添加待办")
@@ -39,7 +47,22 @@ public class TodolistController {
         return todolistService.addTodolist(todolist);
     }
 
-    @ApiOperation(value = "删除待办")
+    @ApiOperation(value = "修改待办")
+    @PutMapping("/")
+    public RespBean updateTodolist(@RequestBody Todolist todolist) {
+        if (todolistService.updateById(todolist)) {
+            return RespBean.success("更新成功！");
+        }
+        return RespBean.error("更新失败！");
+    }
+
+    @ApiOperation(value = "完成待办")
+    @PutMapping("/com")
+    public RespBean comTaskById(@RequestParam Integer id) {
+        return todolistService.comTaskById(id);
+    }
+
+    @ApiOperation(value = "删除待办（真实）")
     @DeleteMapping("/{id}")
     public RespBean deleteTodolist(@PathVariable Integer id) {
         if (todolistService.removeById(id)) {
@@ -48,5 +71,9 @@ public class TodolistController {
         return RespBean.error("删除失败！");
     }
 
-
+    @ApiOperation(value = "删除待办（假）")
+    @PutMapping("/del")
+    public RespBean deleteTaskById(@RequestParam Integer id) {
+        return todolistService.deleteTaskById(id);
+    }
 }

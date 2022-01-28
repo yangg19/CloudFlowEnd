@@ -18,7 +18,6 @@
         <result column="workID" property="workID" />
         <result column="email" property="email" />
         <result column="workGroup" property="workGroup" />
-
     </resultMap>
 
     <resultMap id="AdminWithRole" type="com.cnpc.server.pojo.Admin" extends="BaseResultMap">
@@ -47,11 +46,24 @@
         LEFT JOIN t_role r ON r.id = ar.rid
         WHERE
         a.id != #{id}
-        <if test="null!=keywords and ''!=keywords">
-            AND a.`name` LIKE CONCAT( '%', #{keywords}, '%' )
-        </if>
+            <if test="null!=keywords and ''!=keywords">
+                AND a.`name` LIKE CONCAT( '%', #{keywords}, '%' )
+            </if>
         ORDER BY
         a.id
+    </select>
+
+    <!--获取所有员工-->
+    <select id="getAllAdmin" resultType="com.cnpc.server.pojo.Admin">
+        SELECT
+        id, `name`
+        FROM
+        t_admin
+        <!--<where>-->
+        <!--    <if test="null!=keywords and ''!=keywords">-->
+        <!--        AND a.`name` LIKE CONCAT( '%', #{keywords}, '%' )-->
+        <!--    </if>-->
+        <!--</where>-->
     </select>
 
 </mapper>
