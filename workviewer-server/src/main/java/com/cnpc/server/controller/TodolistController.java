@@ -62,6 +62,12 @@ public class TodolistController {
         return todolistService.comTaskById(id);
     }
 
+    @ApiOperation(value = "重用待办")
+    @PutMapping("/redo")
+    public RespBean redoTaskById(@RequestParam Integer id) {
+        return todolistService.redoTaskById(id);
+    }
+
     @ApiOperation(value = "删除待办（真实）")
     @DeleteMapping("/{id}")
     public RespBean deleteTodolist(@PathVariable Integer id) {

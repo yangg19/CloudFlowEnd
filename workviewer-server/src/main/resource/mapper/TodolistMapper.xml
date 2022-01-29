@@ -11,14 +11,13 @@
         <result column="postCount" property="postCount" />
         <result column="planTime" property="planTime" />
         <result column="taskStatusID" property="taskStatusID" />
-        <result column="tagColor" property="tagColor" />
         <result column="taskDetails" property="taskDetails" />
 
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, userID, todoTask, taskScore, postCount, planTime, taskStatusID, tagColor, taskDetails
+        id, userID, todoTask, taskScore, postCount, planTime, taskStatusID, taskDetails
     </sql>
 
     <!--查询完成或删除待办-->
@@ -63,6 +62,14 @@
     <update id="deleteTaskById" statementType="CALLABLE">
         UPDATE todolist
         SET taskStatusID = '删除'
+        WHERE
+            id = #{id}
+    </update>
+
+    <!--重用待办-->
+    <update id="redoTaskById" statementType="CALLABLE">
+        UPDATE todolist
+        SET taskStatusID = '新建'
         WHERE
             id = #{id}
     </update>

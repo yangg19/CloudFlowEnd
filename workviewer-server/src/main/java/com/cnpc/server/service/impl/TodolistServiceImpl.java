@@ -117,4 +117,12 @@ public class TodolistServiceImpl extends ServiceImpl<TodolistMapper, Todolist> i
         return RespBean.error("删除失败！");
     }
 
+    @Override
+    public RespBean redoTaskById(Integer id) {
+        if (todolistMapper.redoTaskById(id)) {
+            return RespBean.success("状态变更成功！");
+        }
+        return RespBean.error("状态变更失败！");
+    }
+
 }

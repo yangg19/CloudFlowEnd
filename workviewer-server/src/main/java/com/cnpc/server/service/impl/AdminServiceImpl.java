@@ -15,6 +15,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -197,5 +198,27 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
     @Override
     public List<Admin> getAllAdmin(String keywords) {
         return adminMapper.getAllAdmin(keywords);
+    }
+
+    /**
+     * 更新用户头像
+     * @param url
+     * @param id
+     * @param authentication
+     * @return
+     */
+    @Override
+    public RespBean updateAdminUserFace(String url, Integer id, Authentication authentication) {
+        Admin admin = adminMapper.selectById(id);
+        admin.setUserFace(url);
+        int i = adminMapper.updateById(admin);
+        if (i == 1){
+            Admin principal = (Admin) authentication.getPrincipal();
+            principal.setUserFace(url);
+            //更新Authentication
+            SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(admin,authentication.getCredentials(),authentication.getAuthorities()));
+            return RespBean.success("更新成功",url);
+        }
+        return RespBean.error("更新失败");
     }
 }

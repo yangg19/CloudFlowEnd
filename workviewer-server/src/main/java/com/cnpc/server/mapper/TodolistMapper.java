@@ -62,4 +62,15 @@ public interface TodolistMapper extends BaseMapper<Todolist> {
      * @Throws:
      */
     boolean deleteTaskById(@Param("id") Integer id);
+
+    /**
+     * 重用待办
+     *
+     * @Params: [id]
+     * @Return: boolean
+     * @Author: yangg19
+     * @UpdateTime: 2022/1/29 15:19
+     * @Throws:
+     */
+    boolean redoTaskById(@Param("id") Integer id);
 }

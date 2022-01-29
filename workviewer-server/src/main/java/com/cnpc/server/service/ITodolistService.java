@@ -71,4 +71,15 @@ public interface ITodolistService extends IService<Todolist> {
      * @Throws:
      */
     RespBean deleteTaskById(Integer id);
+
+    /**
+     * 重用待办
+     *
+     * @Params: [id]
+     * @Return: com.cnpc.server.pojo.RespBean
+     * @Author: yangg19
+     * @UpdateTime: 2022/1/29 15:18
+     * @Throws:
+     */
+    RespBean redoTaskById(Integer id);
 }

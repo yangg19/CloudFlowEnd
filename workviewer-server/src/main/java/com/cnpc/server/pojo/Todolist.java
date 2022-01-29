@@ -48,9 +48,6 @@ public class Todolist implements Serializable {
     @ApiModelProperty(value = "待办状态")
     private String taskStatusID;
 
-    @ApiModelProperty(value = "是否进行")
-    private String tagColor;
-
     @ApiModelProperty(value = "待办详情")
     private String taskDetails;
 
