@@ -82,4 +82,25 @@ public interface ITodolistService extends IService<Todolist> {
      * @Throws:
      */
     RespBean redoTaskById(Integer id);
-}
+
+    /**
+     * 查询所有人新建/进行中/逾期待办
+     *
+     * @Params: [currentPage, size, beginDateScope]
+     * @Return: com.cnpc.server.pojo.RespPageBean
+     * @Author: yangg19
+     * @UpdateTime: 2022/1/30 9:44
+     * @Throws:
+     */
+    RespPageBean getAllInitTodolistByPage(Integer currentPage, Integer size, LocalDate[] beginDateScope);
+
+    /**
+     * 查询所有人待办事项(完成或删除)
+     *
+     * @Params: [currentPage, size, taskStatusID, beginDateScope]
+     * @Return: com.cnpc.server.pojo.RespPageBean
+     * @Author: yangg19
+     * @UpdateTime: 2022/1/27 14:54
+     * @Throws:
+     */
+    RespPageBean getAllTodolistByPage(Integer currentPage, Integer size, String taskStatusID, LocalDate[] beginDateScope);}

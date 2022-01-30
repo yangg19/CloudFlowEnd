@@ -32,6 +32,23 @@ public class TodolistController {
         return todolistService.getInitTodolistByPage(currentPage, size, beginDateScope);
     }
 
+    @ApiOperation(value = "查询所有人新建/进行中/逾期待办")
+    @GetMapping("/all/init")
+    public RespPageBean getAllInitTodolistInfo(@RequestParam(defaultValue = "1") Integer currentPage,
+                                            @RequestParam(defaultValue = "10") Integer size,
+                                            LocalDate[] beginDateScope) {
+        return todolistService.getAllInitTodolistByPage(currentPage, size, beginDateScope);
+    }
+
+    @ApiOperation(value = "查询所有人完成或删除待办")
+    @GetMapping("/all/query")
+    public RespPageBean getAllTodolistInfo(@RequestParam(defaultValue = "1") Integer currentPage,
+                                        @RequestParam(defaultValue = "10") Integer size,
+                                        @RequestParam String taskStatusID,
+                                        LocalDate[] beginDateScope) {
+        return todolistService.getAllTodolistByPage(currentPage, size, taskStatusID, beginDateScope);
+    }
+
     @ApiOperation(value = "查询完成或删除待办")
     @GetMapping("/query")
     public RespPageBean getTodolistInfo(@RequestParam(defaultValue = "1") Integer currentPage,

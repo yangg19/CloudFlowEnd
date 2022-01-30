@@ -42,11 +42,13 @@
         WHERE
             userID = #{userID}
           AND
+            (
             taskStatusID = '新建'
           OR
             taskStatusID = '进行中'
           OR
             taskStatusID = '逾期'
+            )
         ORDER BY t.taskStatusID DESC, t.planTime
     </select>
 
@@ -73,5 +75,33 @@
         WHERE
             id = #{id}
     </update>
+
+    <!--查询所有人新建/进行中/逾期待办-->
+    <select id="getAllInitTodolistByPage" resultMap="BaseResultMap">
+        SELECT
+            t.*
+        FROM
+            todolist t
+        WHERE
+            (
+            taskStatusID = '新建'
+          OR
+            taskStatusID = '进行中'
+          OR
+            taskStatusID = '逾期'
+            )
+        ORDER BY t.taskStatusID DESC, t.planTime
+    </select>
+
+    <!--查询所有人完成或删除待办-->
+    <select id="getAllTodolistByPage" resultMap="BaseResultMap">
+        SELECT
+            t.*
+        FROM
+            todolist t
+        WHERE
+            taskStatusID = #{taskStatusID}
+        ORDER BY t.planTime
+    </select>
 
 </mapper>

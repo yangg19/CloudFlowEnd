@@ -32,7 +32,7 @@ public class TodolistServiceImpl extends ServiceImpl<TodolistMapper, Todolist> i
     private TodolistMapper todolistMapper;
 
     /**
-     * 查询待办事项
+     * 查询待办事项(完成和删除)
      *
      * @Params: [currentPage, size, taskStatusID, beginDateScope]
      * @Return: com.cnpc.server.pojo.RespPageBean
@@ -123,6 +123,42 @@ public class TodolistServiceImpl extends ServiceImpl<TodolistMapper, Todolist> i
             return RespBean.success("状态变更成功！");
         }
         return RespBean.error("状态变更失败！");
+    }
+
+    /**
+     * 查询所有人新建/进行中/逾期待办
+     *
+     * @Params: [currentPage, size, beginDateScope]
+     * @Return: com.cnpc.server.pojo.RespPageBean
+     * @Author: yangg19
+     * @UpdateTime: 2022/1/30 9:44
+     * @Throws:
+     */
+    @Override
+    public RespPageBean getAllInitTodolistByPage(Integer currentPage, Integer size, LocalDate[] beginDateScope) {
+        // 开启分页
+        Page<Todolist> page = new Page<>(currentPage, size);
+        IPage<Todolist> todolistByPage = todolistMapper.getAllInitTodolistByPage(page, beginDateScope);
+        RespPageBean respPageBean = new RespPageBean(todolistByPage.getTotal(), todolistByPage.getRecords());
+        return respPageBean;
+    }
+
+    /**
+     * 查询所有人待办事项(完成和删除)
+     *
+     * @Params: [currentPage, size, taskStatusID, beginDateScope]
+     * @Return: com.cnpc.server.pojo.RespPageBean
+     * @Author: yangg19
+     * @UpdateTime: 2022/1/27 14:54
+     * @Throws:
+     */
+    @Override
+    public RespPageBean getAllTodolistByPage(Integer currentPage, Integer size, String taskStatusID, LocalDate[] beginDateScope) {
+        // 开启分页
+        Page<Todolist> page = new Page<>(currentPage, size);
+        IPage<Todolist> todolistByPage = todolistMapper.getAllTodolistByPage(page, AdminUtils.getCurrentAdmin().getId(), taskStatusID, beginDateScope);
+        RespPageBean respPageBean = new RespPageBean(todolistByPage.getTotal(), todolistByPage.getRecords());
+        return respPageBean;
     }
 
 }

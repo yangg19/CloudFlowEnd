@@ -73,4 +73,25 @@ public interface TodolistMapper extends BaseMapper<Todolist> {
      * @Throws:
      */
     boolean redoTaskById(@Param("id") Integer id);
-}
+
+    /**
+     * 查询所有人新建/进行中/逾期待办
+     *
+     * @Params: [page, id, beginDateScope]
+     * @Return: com.baomidou.mybatisplus.core.metadata.IPage<com.cnpc.server.pojo.Todolist>
+     * @Author: yangg19
+     * @UpdateTime: 2022/1/30 9:46
+     * @Throws:
+     */
+    IPage<Todolist> getAllInitTodolistByPage(Page<Todolist> page, @Param("beginDateScope") LocalDate[] beginDateScope);
+
+    /**
+     * 查询所有人待办事项(完成或删除)
+     *
+     * @Params: [page, userID, taskStatusID, beginDateScope]
+     * @Return: com.baomidou.mybatisplus.core.metadata.IPage<com.cnpc.server.pojo.Todolist>
+     * @Author: yangg19
+     * @UpdateTime: 2022/1/27 14:55
+     * @Throws:
+     */
+    IPage<Todolist> getAllTodolistByPage(Page<Todolist> page, @Param("userID") Integer userID, @Param("taskStatusID") String taskStatusID, @Param("beginDateScope") LocalDate[] beginDateScope);}
