@@ -78,15 +78,6 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
      */
     @Override
     public RespBean addEmp(Employee employee) {
-        // 处理合同期限，保留两位小数
-        LocalDate beginContract = employee.getBeginContract();// 合同开始时间
-        LocalDate endContract = employee.getEndContract();// 合同结束时间
-        // 计算 两个日期相差多少天
-        long days = beginContract.until(endContract, ChronoUnit.DAYS);
-        // 保留两位小数
-        DecimalFormat decimalFormat = new DecimalFormat("##.00");
-        // 计算以年为单位
-        employee.setContractTerm(Double.parseDouble(decimalFormat.format(days / 365.00)));
         if (1 == employeeMapper.insert(employee)) {
             return RespBean.success("添加成功！");
         }

@@ -12,7 +12,13 @@
         <result column="planTime" property="planTime" />
         <result column="taskStatusID" property="taskStatusID" />
         <result column="taskDetails" property="taskDetails" />
+    </resultMap>
 
+    <resultMap id="TodolistInfo" type="com.cnpc.server.pojo.Todolist" extends="BaseResultMap">
+        <association property="adminName" javaType="com.cnpc.server.pojo.AdminName">
+            <id column="aid" property="id" />
+            <result column="aname" property="name" />
+        </association>
     </resultMap>
 
     <!-- 通用查询结果列 -->
@@ -21,33 +27,47 @@
     </sql>
 
     <!--查询完成或删除待办-->
-    <select id="getTodolistByPage" resultMap="BaseResultMap">
+    <select id="getTodolistByPage" resultMap="TodolistInfo">
         SELECT
-        t.*
+            t.*,
+            a.id AS aid,
+            a.`name` AS aname
+
         FROM
-        todolist t
+            todolist t,
+            t_admin a
+
         WHERE
-            userID = #{userID}
+            t.userID = a.id
+          AND
+            t.userID = #{userID}
         AND
-            taskStatusID = #{taskStatusID}
+            t.taskStatusID = #{taskStatusID}
         ORDER BY t.planTime
     </select>
 
     <!--查询新建/进行中/逾期待办-->
-    <select id="getInitTodolistByPage" resultMap="BaseResultMap">
+    <select id="getInitTodolistByPage" resultMap="TodolistInfo">
         SELECT
-            t.*
+            t.*,
+            a.id AS aid,
+            a.`name` AS aname
+
         FROM
-            todolist t
+            todolist t,
+            t_admin a
+
         WHERE
-            userID = #{userID}
+            t.userID = a.id
+          AND
+            t.userID = #{userID}
           AND
             (
-            taskStatusID = '新建'
+            t.taskStatusID = '新建'
           OR
-            taskStatusID = '进行中'
+            t.taskStatusID = '进行中'
           OR
-            taskStatusID = '逾期'
+            t.taskStatusID = '逾期'
             )
         ORDER BY t.taskStatusID DESC, t.planTime
     </select>
@@ -71,37 +91,103 @@
     <!--重用待办-->
     <update id="redoTaskById" statementType="CALLABLE">
         UPDATE todolist
-        SET taskStatusID = '新建'
+        SET taskStatusID = '进行中'
         WHERE
             id = #{id}
     </update>
 
-    <!--查询所有人新建/进行中/逾期待办-->
-    <select id="getAllInitTodolistByPage" resultMap="BaseResultMap">
-        SELECT
-            t.*
-        FROM
-            todolist t
+    <!--更新待办状态-->
+    <update id="updateTaskStatus" statementType="CALLABLE">
+        UPDATE todolist t
+        SET t.taskStatusID = '逾期'
+--             t.postCount =  t.postCount + 1,
+--             t.planTime = DATE_ADD(t.planTime,INTERVAL 1 WEEK)
         WHERE
+            t.taskStatusID != '完成'
+        AND
+            t.planTime &lt; #{date}
+    </update>
+
+    <!--查询所有人新建/进行中/逾期待办-->
+    <select id="getAllInitTodolistByPage" resultMap="TodolistInfo">
+        SELECT
+            t.*,
+            a.id AS aid,
+            a.`name` AS aname
+
+        FROM
+            todolist t,
+            t_admin a
+
+        WHERE
+            t.userID = a.id
+          AND
             (
-            taskStatusID = '新建'
+            t.taskStatusID = '新建'
           OR
-            taskStatusID = '进行中'
+            t.taskStatusID = '进行中'
           OR
-            taskStatusID = '逾期'
+            t.taskStatusID = '逾期'
             )
-        ORDER BY t.taskStatusID DESC, t.planTime
+        ORDER BY t.userID, t.taskStatusID DESC, t.planTime
     </select>
 
     <!--查询所有人完成或删除待办-->
-    <select id="getAllTodolistByPage" resultMap="BaseResultMap">
+    <select id="getAllTodolistByPage" resultMap="TodolistInfo">
         SELECT
-            t.*
+            t.*,
+            a.id AS aid,
+            a.`name` AS aname
+
         FROM
-            todolist t
+            todolist t,
+            t_admin a
+
         WHERE
-            taskStatusID = #{taskStatusID}
-        ORDER BY t.planTime
+            t.userID = a.id
+          AND
+            t.taskStatusID = #{taskStatusID}
+        ORDER BY t.userID, t.planTime
     </select>
+
+    <!--查询所有人本周待办/删除不看-->
+    <select id="getAllTodolist" resultMap="TodolistInfo">
+        SELECT
+            t.*,
+            a.id AS aid,
+            a.`name` AS aname
+
+        FROM
+            todolist t,
+            t_admin a
+        WHERE
+            t.userID = a.id
+        AND
+            (t.planTime BETWEEN #{startDate} AND  #{endDate} OR t.taskStatusID = '逾期')
+        AND
+            taskStatusID != '删除'
+        ORDER BY t.userID, t.taskStatusID DESC
+    </select>
+
+    <!--查询所有人上周待办/删除不看-->
+    <select id="getAllLastTodolist" resultMap="TodolistInfo">
+        SELECT
+            t.*,
+            a.id AS aid,
+            a.`name` AS aname
+
+        FROM
+            todolist t,
+            t_admin a
+        WHERE
+            t.userID = a.id
+          AND
+            t.planTime BETWEEN #{startDate} AND  #{endDate}
+          AND
+            taskStatusID != '删除'
+        ORDER BY t.userID, t.taskStatusID DESC
+    </select>
+
+
 
 </mapper>

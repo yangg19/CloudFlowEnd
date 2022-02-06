@@ -6,14 +6,13 @@
     <resultMap id="BaseResultMap" type="com.cnpc.server.pojo.Joblevel">
         <id column="id" property="id" />
         <result column="name" property="name" />
-        <result column="titleLevel" property="titleLevel" />
         <result column="createDate" property="createDate" />
         <result column="enabled" property="enabled" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, name, titleLevel, createDate, enabled
+        id, name, createDate, enabled
     </sql>
 
 </mapper>

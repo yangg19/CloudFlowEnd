@@ -40,4 +40,6 @@ public interface AdminMapper extends BaseMapper<Admin> {
      * @Throws:
      */
     List<Admin> getAllAdmin(@Param("keywords") String keywords);
+
+    String getAdminName(Integer id);
 }

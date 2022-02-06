@@ -221,4 +221,9 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
         }
         return RespBean.error("更新失败");
     }
+
+    @Override
+    public String getAdminName(Integer id) {
+        return adminMapper.getAdminName(id);
+    }
 }

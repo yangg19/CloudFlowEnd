@@ -2,33 +2,39 @@ package com.cnpc.server.pojo;
 
 import cn.afterturn.easypoi.excel.annotation.Excel;
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.cnpc.server.config.CustomAuthorityDeserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 import lombok.experimental.Accessors;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author yangg19
  * @since 2021-11-29
  */
 @Data
-@NoArgsConstructor
 @RequiredArgsConstructor
-@EqualsAndHashCode(callSuper = false, of = "name")
+@EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("t_joblevel")
-@ApiModel(value="Joblevel对象", description="")
-public class Joblevel implements Serializable {
+@TableName("t_admin")
+@ApiModel(value="Admin对象", description="")
+public class AdminName implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -36,17 +42,8 @@ public class Joblevel implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty(value = "职称名称")
-    @Excel(name = "职称名称")
-    @NonNull
+    @ApiModelProperty(value = "姓名")
+    @Excel(name = "姓名")
     private String name;
-
-    @ApiModelProperty(value = "创建时间")
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Shanghai")
-    private LocalDateTime createDate;
-
-    @ApiModelProperty(value = "是否启用")
-    private Boolean enabled;
-
 
 }

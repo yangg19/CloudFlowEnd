@@ -6,6 +6,9 @@ import com.cnpc.server.pojo.RespPageBean;
 import com.cnpc.server.pojo.Todolist;
 
 import java.time.LocalDate;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -103,4 +106,16 @@ public interface ITodolistService extends IService<Todolist> {
      * @UpdateTime: 2022/1/27 14:54
      * @Throws:
      */
-    RespPageBean getAllTodolistByPage(Integer currentPage, Integer size, String taskStatusID, LocalDate[] beginDateScope);}
+    RespPageBean getAllTodolistByPage(Integer currentPage, Integer size, String taskStatusID, LocalDate[] beginDateScope);
+
+    List<Todolist> getAllTodolist();
+
+    List<Todolist> getAllLastTodolist();
+
+
+    Map<String, String> getCurrentWeek();
+
+    Map<String, String> getLastWeek();
+
+    void updateTaskStatus(Date date);
+}

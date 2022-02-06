@@ -36,6 +36,12 @@ public class AdminController {
         return adminService.getAllAdmins(keywords);
     }
 
+    @ApiOperation(value = "根据ID获取操作员名字")
+    @GetMapping("/getName/{id}")
+    public String getAllAdmin(@PathVariable Integer id) {
+        return adminService.getAdminName(id);
+    }
+
     @ApiOperation(value = "更新操作员")
     @PutMapping("/")
     public RespBean updateAdmin(@RequestBody Admin admin) {

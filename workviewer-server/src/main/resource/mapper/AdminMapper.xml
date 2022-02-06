@@ -71,4 +71,14 @@
         <!--</where>-->
     </select>
 
+    <!--获取所有员工-->
+    <select id="getAdminName" resultType="string">
+        SELECT
+            `name`
+        FROM
+            t_admin
+        WHERE
+            id = #{id}
+    </select>
+
 </mapper>

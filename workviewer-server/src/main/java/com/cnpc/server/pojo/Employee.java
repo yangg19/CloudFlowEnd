@@ -82,18 +82,11 @@ public class Employee implements Serializable {
     @Excel(name = "联系地址",width = 40)
     private String address;
 
-    @ApiModelProperty(value = "所属部门")
-    private Integer departmentId;
-
     @ApiModelProperty(value = "职称ID")
     private Integer jobLevelId;
 
     @ApiModelProperty(value = "职位ID")
     private Integer posId;
-
-    @ApiModelProperty(value = "聘用形式")
-    @Excel(name = "聘用形式")
-    private String engageForm;
 
     @ApiModelProperty(value = "最高学历")
     @Excel(name = "最高学历")
@@ -107,50 +100,9 @@ public class Employee implements Serializable {
     @Excel(name = "毕业院校",width = 20)
     private String school;
 
-    @ApiModelProperty(value = "入职日期")
-//    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
-    //@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    @Excel(name = "入职日期",format = "yyyy-MM-dd",width = 20)
-    private LocalDate beginDate;
-
-    @ApiModelProperty(value = "在职状态")
-    @Excel(name = "在职状态")
-    private String workState;
-
     @ApiModelProperty(value = "工号")
     @Excel(name = "工号")
     private String workID;
-
-    @ApiModelProperty(value = "合同期限")
-    @Excel(name = "合同期限",suffix = "年")
-    private Double contractTerm;
-
-    @ApiModelProperty(value = "转正日期")
-//    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
-    @Excel(name = "转正日期",format = "yyyy-MM-dd",width = 20)
-    private LocalDate conversionTime;
-
-    @ApiModelProperty(value = "离职日期")
-    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
-    private LocalDate notWorkDate;
-
-    @ApiModelProperty(value = "合同起始日期")
-    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
-    @Excel(name = "合同起始日期",format = "yyyy-MM-dd",width = 20)
-    private LocalDate beginContract;
-
-    @ApiModelProperty(value = "合同终止日期")
-    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
-    @Excel(name = "合同终止日期",format = "yyyy-MM-dd",width = 20)
-    private LocalDate endContract;
-
-    @ApiModelProperty(value = "工龄")
-    private Integer workAge;
-
-    @ApiModelProperty(value = "工资账套ID")
-    private Integer salaryId;
 
     @ApiModelProperty(value = "民族")
     @TableField(exist = false)
@@ -162,11 +114,6 @@ public class Employee implements Serializable {
     @ExcelEntity(name = "政治面貌")
     private PoliticsStatus politicsStatus;
 
-    @ApiModelProperty(value = "部门")
-    @TableField(exist = false)
-    @ExcelEntity(name = "部门")
-    private Department department;
-
     @ApiModelProperty(value = "职称")
     @TableField(exist = false)
     @ExcelEntity(name = "职称")
@@ -176,8 +123,4 @@ public class Employee implements Serializable {
     @TableField(exist = false)
     @ExcelEntity(name = "职位")
     private Position position;
-
-    @ApiModelProperty(value = "工资套账")
-    @TableField(exist = false)
-    private Salary salary;
 }

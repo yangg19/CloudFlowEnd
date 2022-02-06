@@ -108,4 +108,6 @@ public interface IAdminService extends IService<Admin> {
      * @return
      */
     RespBean updateAdminUserFace(String url, Integer id, Authentication authentication);
+
+    String getAdminName(Integer id);
 }

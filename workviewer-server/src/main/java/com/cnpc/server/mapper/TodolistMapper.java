@@ -8,6 +8,8 @@ import com.cnpc.server.pojo.Todolist;
 import org.apache.ibatis.annotations.Param;
 
 import java.time.LocalDate;
+import java.util.Date;
+import java.util.List;
 
 /**
  * <p>
@@ -94,4 +96,11 @@ public interface TodolistMapper extends BaseMapper<Todolist> {
      * @UpdateTime: 2022/1/27 14:55
      * @Throws:
      */
-    IPage<Todolist> getAllTodolistByPage(Page<Todolist> page, @Param("userID") Integer userID, @Param("taskStatusID") String taskStatusID, @Param("beginDateScope") LocalDate[] beginDateScope);}
+    IPage<Todolist> getAllTodolistByPage(Page<Todolist> page, @Param("userID") Integer userID, @Param("taskStatusID") String taskStatusID, @Param("beginDateScope") LocalDate[] beginDateScope);
+
+    List<Todolist> getAllTodolist(@Param("startDate") String startDate, @Param("endDate") String endDate);
+
+    List<Todolist> getAllLastTodolist(@Param("startDate") String startDate, @Param("endDate") String endDate);
+
+    void updateTaskStatus(@Param("date") Date date);
+}

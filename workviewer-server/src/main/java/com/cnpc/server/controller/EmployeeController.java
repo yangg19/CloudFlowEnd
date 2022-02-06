@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.jnlp.FileContents;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -152,7 +151,6 @@ public class EmployeeController {
         params.setTitleRows(1);
         List<Nation> nationList = nationService.list();
         List<PoliticsStatus> politicsStatusesList = politicsStatusService.list();
-        List<Department> departmentsList = departmentService.list();
         List<Joblevel> joblevelsList = joblevelService.list();
         List<Position> positionsList = positionService.list();
         try {
@@ -164,8 +162,6 @@ public class EmployeeController {
                 employee.setNationId(nationList.get(nationList.indexOf(new Nation(employee.getNation().getName()))).getId());
                 // 政治 id
                 employee.setPoliticId(politicsStatusesList.get(politicsStatusesList.indexOf(new PoliticsStatus(employee.getPoliticsStatus().getName()))).getId());
-                // 部门 id
-                employee.setDepartmentId(departmentsList.get(departmentsList.indexOf(new Department(employee.getDepartment().getName()))).getId());
                 // 职称 id
                 employee.setJobLevelId(joblevelsList.get(joblevelsList.indexOf(new Joblevel(employee.getJoblevel().getName()))).getId());
                 // 职位 id
