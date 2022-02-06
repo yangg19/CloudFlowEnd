@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cnpc.server.mapper.BillboardMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cnpc.server.pojo.Billboard">
+        <id column="id" property="id" />
+        <result column="noticeContent1" property="noticeContent1" />
+        <result column="noticeContent2" property="noticeContent2" />
+        <result column="noticeContent3" property="noticeContent3" />
+
+        <result column="creatDate" property="creatDate" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, noticeContent, creatDate
+    </sql>
+
+</mapper>
