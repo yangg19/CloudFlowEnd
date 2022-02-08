@@ -43,8 +43,6 @@ public class EmployeeController {
     private INationService nationService;
     @Autowired
     private IPositionService positionService;
-    @Autowired
-    private IDepartmentService departmentService;
 
     @ApiOperation(value = "查询所有员工（分页）")
     @GetMapping("/")
@@ -77,12 +75,6 @@ public class EmployeeController {
     @GetMapping("/positions")
     public List<Position> getAllPositions() {
         return positionService.list();
-    }
-
-    @ApiOperation(value = "获取所有部门")
-    @GetMapping("/deps")
-    public List<Department> getAllDepartment() {
-        return departmentService.getAllDepartments();
     }
 
     @ApiOperation(value = "获取工号")

@@ -60,6 +60,8 @@ public class LoginController {
     @PostMapping("/logout")
     // 调用退出成功接口后，返回给前端状态码200，前端直接删除token，完成退出登录功能
     public RespBean loginout() {
-        return RespBean.success("注销成功！");
+//        return RespBean.success("注销成功！");
+        return RespBean.success("");
+
     }
 }

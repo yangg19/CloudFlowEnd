@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cnpc.server.mapper.TestTableMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cnpc.server.pojo.TestTable">
+        <id column="id" property="id" />
+        <result column="contentInfo" property="contentInfo" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, contentInfo
+    </sql>
+
+
+    <select id="getAll" resultType="com.cnpc.server.pojo.TestTable">
+        select
+            *
+        from
+            testtable
+    </select>
+
+</mapper>

@@ -100,9 +100,9 @@ public class TodolistServiceImpl extends ServiceImpl<TodolistMapper, Todolist> i
     @Override
     public RespBean comTaskById(Integer id) {
         if (todolistMapper.comTaskById(id)) {
-            return RespBean.success("状态变更成功！");
+            return RespBean.success("");
         }
-        return RespBean.error("状态变更失败！");
+        return RespBean.error("");
     }
 
     /**
@@ -125,9 +125,9 @@ public class TodolistServiceImpl extends ServiceImpl<TodolistMapper, Todolist> i
     @Override
     public RespBean redoTaskById(Integer id) {
         if (todolistMapper.redoTaskById(id)) {
-            return RespBean.success("状态变更成功！");
+            return RespBean.success("");
         }
-        return RespBean.error("状态变更失败！");
+        return RespBean.error("");
     }
 
     /**

@@ -1,15 +1,15 @@
 package com.cnpc.server.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cnpc.server.AdminUtils;
 import com.cnpc.server.config.security.component.JwtTokenUtil;
+import com.cnpc.server.mapper.AdminInfoMapper;
 import com.cnpc.server.mapper.AdminMapper;
 import com.cnpc.server.mapper.AdminRoleMapper;
 import com.cnpc.server.mapper.RoleMapper;
-import com.cnpc.server.pojo.Admin;
-import com.cnpc.server.pojo.AdminRole;
-import com.cnpc.server.pojo.RespBean;
-import com.cnpc.server.pojo.Role;
+import com.cnpc.server.pojo.*;
 import com.cnpc.server.service.IAdminService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +25,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,6 +46,8 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
     UserDetailsService userDetailsService;
     @Autowired
     private AdminMapper adminMapper;
+    @Autowired
+    private AdminInfoMapper adminInfoMapper;
     @Autowired
     private RoleMapper roleMapper;
     @Autowired
@@ -92,7 +95,9 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
         Map<String, String> tokenMap = new HashMap<>();
         tokenMap.put("token", token);
         tokenMap.put("tokenHead", tokenHead);
-        return RespBean.success("登录成功", tokenMap);
+        return RespBean.success("", tokenMap);
+//        return RespBean.success("登录成功", tokenMap);
+
     }
 
     /**

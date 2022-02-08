@@ -1,12 +1,16 @@
 package com.cnpc.server.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cnpc.server.pojo.Admin;
+import com.cnpc.server.pojo.Employee;
 import com.cnpc.server.pojo.Menu;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -42,4 +46,5 @@ public interface AdminMapper extends BaseMapper<Admin> {
     List<Admin> getAllAdmin(@Param("keywords") String keywords);
 
     String getAdminName(Integer id);
+
 }

@@ -35,7 +35,7 @@ public class PoliticsStatus implements Serializable {
     private Integer id;
 
     @ApiModelProperty(value = "政治面貌")
-    @Excel(name = "政治面貌")
+    @Excel(name = "政治面貌",width = 20)
     @NonNull
     private String name;
 

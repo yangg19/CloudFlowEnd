@@ -49,7 +49,7 @@ public class Admin implements Serializable, UserDetails {
     @ApiModelProperty(value = "手机号码")
     private String phone;
 
-    @ApiModelProperty(value = "住宅电话")
+    @ApiModelProperty(value = "座机号码")
     private String telephone;
 
     @ApiModelProperty(value = "联系地址")

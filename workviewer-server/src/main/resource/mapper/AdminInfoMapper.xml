@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cnpc.server.mapper.AdminInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cnpc.server.pojo.AdminInfo">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="phone" property="phone" />
+        <result column="telephone" property="telephone" />
+        <result column="address" property="address" />
+        <result column="birthday" property="birthday" />
+        <result column="workID" property="workID" />
+        <result column="email" property="email" />
+        <result column="gender" property="gender" />
+        <result column="idCard" property="idCard" />
+        <result column="wedlock" property="wedlock" />
+        <result column="nationId" property="nationId" />
+        <result column="politicId" property="politicId" />
+        <result column="nativePlace" property="nativePlace" />
+        <result column="jobLevelId" property="jobLevelId" />
+        <result column="posId" property="posId" />
+        <result column="tiptopDegree" property="tiptopDegree" />
+        <result column="specialty" property="specialty" />
+        <result column="school" property="school" />
+        <result column="username" property="username" />
+
+    </resultMap>
+
+    <resultMap id="AdminInfo" type="com.cnpc.server.pojo.AdminInfo" extends="BaseResultMap">
+        <association property="nation" javaType="com.cnpc.server.pojo.Nation">
+            <id column="nid" property="id" />
+            <result column="nname" property="name" />
+        </association>
+        <association property="politicsStatus" javaType="com.cnpc.server.pojo.PoliticsStatus">
+            <id column="pid" property="id" />
+            <result column="pname" property="name" />
+        </association>
+        <association property="joblevel" javaType="com.cnpc.server.pojo.Joblevel">
+            <id column="jid" property="id" />
+            <result column="jname" property="name" />
+        </association>
+        <association property="position" javaType="com.cnpc.server.pojo.Position">
+            <id column="posid" property="id" />
+            <result column="posname" property="name" />
+        </association>
+    </resultMap>
+
+    <!-- 通用查询结果列 待补充-->
+    <sql id="Base_Column_List">
+        id, name, phone, telephone, address, enabled, username, password, userFace, remark
+    </sql>
+
+
+    <!-- 获取所有员工（分页）-->
+    <select id="getAdminByPage" resultMap="AdminInfo">
+        SELECT
+        a.*,
+        n.id AS nid,
+        n.`name` AS nname,
+        p.id AS pid,
+        p.`name` AS pname,
+        j.id AS jid,
+        j.`name` AS jname,
+        pos.id AS posid,
+        pos.`name` AS posname
+        FROM
+        t_admin a,
+        t_nation n,
+        t_politics_status p,
+        t_joblevel j,
+        t_position pos
+        WHERE
+        a.nationId = n.id
+        AND a.politicId = p.id
+        AND a.jobLevelId = j.id
+        AND a.posId = pos.id
+        <if test="null!=adminInfo.name and ''!=adminInfo.name">
+            AND a.`name` LIKE CONCAT('%',#{adminInfo.name},'%')
+        </if>
+        <if test="null!=adminInfo.politicId and ''!=adminInfo.politicId">
+            AND a.politicId = #{adminInfo.politicId}
+        </if>
+        <if test="null!=adminInfo.nationId and ''!=adminInfo.nationId">
+            AND a.nationId = #{adminInfo.nationId}
+        </if>
+        <if test="null!=adminInfo.posId and ''!=adminInfo.posId">
+            AND a.posId = #{adminInfo.posId}
+        </if>
+        <if test="null!=adminInfo.jobLevelId and ''!=adminInfo.jobLevelId">
+            AND a.jobLevelId = #{adminInfo.jobLevelId}
+        </if>
+        <if test="null!=adminInfo.posId and ''!=adminInfo.posId">
+            AND a.posId = #{adminInfo.posId}
+        </if>
+        ORDER BY a.id
+    </select>
+
+    <!--查询员工-->
+    <select id="getAdminInfo" resultMap="AdminInfo">
+        SELECT
+        a.*,
+        n.id AS nid,
+        n.`name` AS nname,
+        p.id AS pid,
+        p.`name` AS pname,
+        j.id AS jid,
+        j.`name` AS jname,
+        pos.id AS posid,
+        pos.`name` AS posname
+        FROM
+        t_admin a,
+        t_nation n,
+        t_politics_status p,
+        t_joblevel j,
+        t_position pos
+        WHERE
+        a.nationId = n.id
+        AND a.politicId = p.id
+        AND a.jobLevelId = j.id
+        AND a.posId = pos.id
+        <if test="null!=id">
+            AND a.id = #{id}
+        </if>
+        ORDER BY a.id
+    </select>
+
+</mapper>
