@@ -269,7 +269,7 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         admin.setPassword(encoder.encode(admin.getPassword()));
         if (1 == adminMapper.insert(admin)) {
-            return RespBean.success("注册成功！");
+            return RespBean.success("注册成功，请联系管理员开通权限！");
         }
         return RespBean.error("注册失败！");
     }

@@ -106,7 +106,7 @@ public class AdminInfo implements Serializable {
 
     @ApiModelProperty(value = "工号")
     @Excel(name = "工号")
-    private String workID;
+    private Integer workID;
 
     @ApiModelProperty(value = "民族")
     @TableField(exist = false)
