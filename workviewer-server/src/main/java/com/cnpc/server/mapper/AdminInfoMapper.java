@@ -42,4 +42,15 @@ public interface AdminInfoMapper extends BaseMapper<AdminInfo> {
      * @Throws:
      */
     List<AdminInfo> getAdminInfo(@Param("id") Integer id);
+
+    /**
+     * 补充注册信息
+     *
+     * @Params: [adminInfo]
+     * @Return: boolean
+     * @Author: yangg19
+     * @UpdateTime: 2022/2/9 18:26
+     * @Throws:
+     */
+    boolean RegisterAdminSubInfo(@Param("adminInfo") AdminInfo adminInfo);
 }

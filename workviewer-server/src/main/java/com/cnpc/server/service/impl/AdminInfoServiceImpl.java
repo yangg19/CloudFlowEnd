@@ -84,4 +84,21 @@ public class AdminInfoServiceImpl extends ServiceImpl<AdminInfoMapper, AdminInfo
     public List<AdminInfo> getAdminInfo(Integer id) {
         return adminInfoMapper.getAdminInfo(id);
     }
+
+    /**
+     * 补充注册信息
+     *
+     * @Params: [adminInfo]
+     * @Return: com.cnpc.server.pojo.RespBean
+     * @Author: yangg19
+     * @UpdateTime: 2022/2/9 18:25
+     * @Throws:
+     */
+    @Override
+    public RespBean RegisterAdminSubInfo(AdminInfo adminInfo) {
+        if (adminInfoMapper.RegisterAdminSubInfo(adminInfo)) {
+            return RespBean.success("");
+        }
+        return RespBean.error("");
+    }
 }

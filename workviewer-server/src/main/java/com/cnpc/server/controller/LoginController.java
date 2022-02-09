@@ -1,8 +1,10 @@
 package com.cnpc.server.controller;
 
 import com.cnpc.server.pojo.Admin;
+import com.cnpc.server.pojo.AdminInfo;
 import com.cnpc.server.pojo.AdminLoginParam;
 import com.cnpc.server.pojo.RespBean;
+import com.cnpc.server.service.IAdminInfoService;
 import com.cnpc.server.service.IAdminService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -27,6 +29,9 @@ public class LoginController {
 
     @Autowired
     private IAdminService adminService;
+
+    @Autowired
+    private IAdminInfoService adminInfoService;
 
     @ApiOperation(value = "登录之后返回token")
     @PostMapping("/login")
@@ -74,15 +79,17 @@ public class LoginController {
     @ApiOperation(value = "注册用户")
     @PostMapping("/register")
     public RespBean RegisterAdmin(@RequestBody Admin admin) {
-        System.out.println("controller");
-        System.out.println(admin);
-        System.out.println(admin);
-        System.out.println(admin);
-        System.out.println(admin);
-        System.out.println(admin);
-        System.out.println(admin);
-        System.out.println("controller");
-
         return adminService.registerAdmin(admin);
+    }
+
+    @ApiOperation(value = "补充注册信息员工")
+    @PutMapping("/registerSub")
+    public RespBean RegisterAdminSubInfo(@RequestBody AdminInfo adminInfo) {
+        System.out.println(adminInfo);
+        System.out.println(adminInfo);
+        System.out.println(adminInfo);
+        System.out.println(adminInfo);
+
+        return adminInfoService.RegisterAdminSubInfo(adminInfo);
     }
 }

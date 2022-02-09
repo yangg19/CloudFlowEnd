@@ -53,6 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/logout",
                 "/findPass",
                 "/register",
+                "registerSub",
                 "/css/**",
                 "/js/**",
                 "/index.html",

@@ -51,6 +51,18 @@
         id, name, phone, telephone, address, enabled, username, password, userFace, remark
     </sql>
 
+    <!--补充注册信息-->
+    <update id="RegisterAdminSubInfo">
+        UPDATE t_admin
+        SET posId = #{adminInfo.posId},
+            politicId = #{adminInfo.politicId},
+            nationId = #{adminInfo.nationId},
+            jobLevelId = #{adminInfo.jobLevelId},
+            birthday = #{adminInfo.birthday}
+        WHERE
+            workID = #{adminInfo.workID}
+    </update>
+
 
     <!-- 获取所有员工（分页）-->
     <select id="getAdminByPage" resultMap="AdminInfo">
