@@ -7,14 +7,12 @@ import com.cnpc.server.service.IAdminService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.cnpc.server.service.IAdminService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
+import java.util.Map;
 
 /**
  * TODO
@@ -62,6 +60,29 @@ public class LoginController {
     public RespBean loginout() {
 //        return RespBean.success("注销成功！");
         return RespBean.success("");
+    }
 
+    @ApiOperation(value = "通过密码保护修改密码")
+    @PutMapping("/findPass")
+    public RespBean findPasswordByProtect(@RequestBody Map<String, Object> info) {
+        String passAnswer = (String) info.get("passAnswer");
+        String pass = (String) info.get("pass");
+        Integer adminId = (Integer) info.get("adminId");
+        return adminService.findPasswordByProtect(passAnswer, pass, adminId);
+    }
+
+    @ApiOperation(value = "注册用户")
+    @PostMapping("/register")
+    public RespBean RegisterAdmin(@RequestBody Admin admin) {
+        System.out.println("controller");
+        System.out.println(admin);
+        System.out.println(admin);
+        System.out.println(admin);
+        System.out.println(admin);
+        System.out.println(admin);
+        System.out.println(admin);
+        System.out.println("controller");
+
+        return adminService.registerAdmin(admin);
     }
 }

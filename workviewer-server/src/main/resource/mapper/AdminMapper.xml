@@ -18,6 +18,9 @@
         <result column="workID" property="workID" />
         <result column="email" property="email" />
         <result column="workGroup" property="workGroup" />
+        <result column="passQuestion" property="passQuestion" />
+        <result column="passAnswer" property="passAnswer" />
+
     </resultMap>
 
     <resultMap id="AdminWithRole" type="com.cnpc.server.pojo.Admin" extends="BaseResultMap">

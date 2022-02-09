@@ -83,6 +83,12 @@ public class Admin implements Serializable, UserDetails {
     @ApiModelProperty(value = "组别")
     private String workGroup;
 
+    @ApiModelProperty(value = "密保问题")
+    private String passQuestion;
+
+    @ApiModelProperty(value = "密保回答")
+    private String passAnswer;
+
     @ApiModelProperty(value = "角色")
     @TableField(exist = false)
     private List<Role> roles;

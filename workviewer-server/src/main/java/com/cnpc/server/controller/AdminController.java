@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -69,5 +70,23 @@ public class AdminController {
     @PutMapping("/role")
     public RespBean updateAdminRole(Integer adminId, Integer[] rids) {
         return adminService.updateAdminRole(adminId, rids);
+    }
+
+    @ApiOperation(value = "更新密码")
+    @PutMapping("/password")
+    public RespBean updateAdminPassword(@RequestBody Map<String, Object> info) {
+        String oldPass = (String) info.get("oldPass");
+        String pass = (String) info.get("pass");
+        Integer adminId = (Integer) info.get("adminId");
+        return adminService.updateAdminPassword(oldPass, pass, adminId);
+    }
+
+    @ApiOperation(value = "设置密码保护")
+    @PutMapping("/passPro")
+    public RespBean updatePasswordProtect(@RequestBody Map<String, Object> info) {
+        String passQuestion = (String) info.get("passQuestion");
+        String passAnswer = (String) info.get("passAnswer");
+        Integer adminId = (Integer) info.get("adminId");
+        return adminService.updatePasswordProtect(passQuestion, passAnswer, adminId);
     }
 }

@@ -231,4 +231,46 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
     public String getAdminName(Integer id) {
         return adminMapper.getAdminName(id);
     }
+
+    @Override
+    public RespBean updatePasswordProtect(String passQuestion, String passAnswer, Integer adminId) {
+        Admin admin = adminMapper.selectById(adminId);
+        admin.setPassword(passQuestion);
+        admin.setPassword(passAnswer);
+
+        // 设置密码保护
+        int result = adminMapper.updateById(admin);
+        if(1==result) {
+            return RespBean.success("设置成功！");
+        } else {
+            return RespBean.error("设置失败！");
+        }
+    }
+
+    @Override
+    public RespBean findPasswordByProtect(String passAnswer, String pass, Integer adminId) {
+        Admin admin = adminMapper.selectById(adminId);
+        // 密码加密
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        System.out.println(admin.getPassAnswer());
+        System.out.println(passAnswer);
+        if (passAnswer.equals(admin.getPassAnswer())) {
+            admin.setPassword(encoder.encode(pass));
+            int result = adminMapper.updateById(admin);
+            if(1==result) {
+                return RespBean.success("修改成功！");
+            }
+        }
+        return RespBean.error("密码保护不正确，请重新输入！");
+    }
+
+    @Override
+    public RespBean registerAdmin(Admin admin) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        admin.setPassword(encoder.encode(admin.getPassword()));
+        if (1 == adminMapper.insert(admin)) {
+            return RespBean.success("注册成功！");
+        }
+        return RespBean.error("注册失败！");
+    }
 }

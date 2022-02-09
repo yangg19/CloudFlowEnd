@@ -107,5 +107,47 @@ public interface IAdminService extends IService<Admin> {
      */
     RespBean updateAdminUserFace(String url, Integer id, Authentication authentication);
 
+    /**
+     * 获取用户姓名
+     *
+     * @Params: [id]
+     * @Return: java.lang.String
+     * @Author: yangg19
+     * @UpdateTime: 2022/2/9 10:13
+     * @Throws:
+     */
     String getAdminName(Integer id);
+
+    /**
+     * 设置密码保护
+     *
+     * @Params: [passQuestion, passAnswer, adminId]
+     * @Return: com.cnpc.server.pojo.RespBean
+     * @Author: yangg19
+     * @UpdateTime: 2022/2/9 10:13
+     * @Throws:
+     */
+    RespBean updatePasswordProtect(String passQuestion, String passAnswer, Integer adminId);
+
+    /**
+     * 通过密保修改密码
+     *
+     * @Params: [passAnswer, pass, adminId]
+     * @Return: com.cnpc.server.pojo.RespBean
+     * @Author: yangg19
+     * @UpdateTime: 2022/2/9 10:40
+     * @Throws:
+     */
+    RespBean findPasswordByProtect(String passAnswer, String pass, Integer adminId);
+
+    /**
+     * 注册用户
+     *
+     * @Params: [admin]
+     * @Return: com.cnpc.server.pojo.RespBean
+     * @Author: yangg19
+     * @UpdateTime: 2022/2/9 16:55
+     * @Throws:
+     */
+    RespBean registerAdmin(Admin admin);
 }

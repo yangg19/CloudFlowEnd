@@ -2,11 +2,9 @@ package com.cnpc.server.service.impl;
 
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.cnpc.server.mapper.SysMsgMapper;
 import com.cnpc.server.mapper.TestTableMapper;
-import com.cnpc.server.pojo.SysMsg;
 import com.cnpc.server.pojo.TestTable;
-import com.cnpc.server.service.ISysMsgService;
+import com.cnpc.server.service.ITestTableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.cnpc.server.service.impl;
+package com.cnpc.server.service;
 
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.extension.service.IService;
