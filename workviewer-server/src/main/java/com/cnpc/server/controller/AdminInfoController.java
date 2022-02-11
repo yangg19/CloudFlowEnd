@@ -51,6 +51,12 @@ public class AdminInfoController {
         return adminInfoService.getAdminByPage(currentPage, size, adminInfo);
     }
 
+    @ApiOperation(value = "根据当前用户获取用户信息")
+    @GetMapping("/adminInfo")
+    public AdminInfo getAdminInfoById() {
+        return adminInfoService.getAdminInfoById();
+    }
+
     @ApiOperation(value = "获取所有政治面貌")
     @GetMapping("/politicsStatus")
     public List<PoliticsStatus> getAllPoliticsStatus() {
@@ -103,13 +109,6 @@ public class AdminInfoController {
     @GetMapping(value = "/export",produces = "application/octet-stream")
     public void exportAdminInfo(HttpServletResponse response){
         List<AdminInfo> list = adminInfoService.getAdminInfo(null);
-        System.out.println(list);
-        System.out.println(list);
-        System.out.println(list);
-        System.out.println(list);
-        System.out.println(list);
-        System.out.println(list);
-
         ExportParams params = new ExportParams("员工表","员工表", ExcelType.HSSF);
         Workbook workbook = ExcelExportUtil.exportExcel(params,AdminInfo.class,list);
         ServletOutputStream outputStream = null;

@@ -138,7 +138,7 @@ public interface IAdminService extends IService<Admin> {
      * @UpdateTime: 2022/2/9 10:40
      * @Throws:
      */
-    RespBean findPasswordByProtect(String passAnswer, String pass, Integer adminId);
+    RespBean findPasswordByProtect(String passQuestion, String passAnswer, String pass, String username);
 
     /**
      * 注册用户

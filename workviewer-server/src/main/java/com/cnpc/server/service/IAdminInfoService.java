@@ -62,4 +62,15 @@ public interface IAdminInfoService extends IService<AdminInfo> {
      * @Throws:
      */
     RespBean RegisterAdminSubInfo(AdminInfo adminInfo);
+
+    /**
+     * 根据当前用户获取用户信息
+     *
+     * @Params: []
+     * @Return: com.cnpc.server.pojo.RespPageBean
+     * @Author: yangg19
+     * @UpdateTime: 2022/2/10 15:51
+     * @Throws:
+     */
+    AdminInfo getAdminInfoById();
 }

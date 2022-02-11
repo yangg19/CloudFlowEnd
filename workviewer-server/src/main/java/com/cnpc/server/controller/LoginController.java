@@ -52,11 +52,18 @@ public class LoginController {
         String username = principal.getName();
         // 获取完整用户对象
         Admin admin = adminService.getAdminByUsername(username);
+        System.out.println(admin);
         // 密码不可以返回给前端，防止用户信息泄露
         admin.setPassword(null);
         // 返回用户角色信息
         admin.setRoles(adminService.getRoles(admin.getId()));
         return admin;
+    }
+
+    @ApiOperation(value = "获取用户密保信息")
+    @GetMapping("/pass-pro-info")
+    public Admin getPassProInfo(@RequestParam String username) {
+        return adminService.getAdminByUsername(username);
     }
 
     @ApiOperation(value = "退出登录")
@@ -68,12 +75,13 @@ public class LoginController {
     }
 
     @ApiOperation(value = "通过密码保护修改密码")
-    @PutMapping("/findPass")
+    @PutMapping("/find-pass")
     public RespBean findPasswordByProtect(@RequestBody Map<String, Object> info) {
+        String passQuestion = (String) info.get("passQuestion");
         String passAnswer = (String) info.get("passAnswer");
         String pass = (String) info.get("pass");
-        Integer adminId = (Integer) info.get("adminId");
-        return adminService.findPasswordByProtect(passAnswer, pass, adminId);
+        String username = (String) info.get("username");
+        return adminService.findPasswordByProtect(passQuestion, passAnswer, pass, username);
     }
 
     @ApiOperation(value = "注册用户")
@@ -83,13 +91,8 @@ public class LoginController {
     }
 
     @ApiOperation(value = "补充注册信息员工")
-    @PutMapping("/registerSub")
+    @PutMapping("/register-sub")
     public RespBean RegisterAdminSubInfo(@RequestBody AdminInfo adminInfo) {
-        System.out.println(adminInfo);
-        System.out.println(adminInfo);
-        System.out.println(adminInfo);
-        System.out.println(adminInfo);
-
         return adminInfoService.RegisterAdminSubInfo(adminInfo);
     }
 }

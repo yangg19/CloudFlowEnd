@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cnpc.server.pojo.Admin;
 import com.cnpc.server.pojo.AdminInfo;
 import com.cnpc.server.pojo.Employee;
+import com.cnpc.server.pojo.RespPageBean;
 import org.apache.ibatis.annotations.Param;
 
 import java.time.LocalDate;
@@ -53,4 +54,15 @@ public interface AdminInfoMapper extends BaseMapper<AdminInfo> {
      * @Throws:
      */
     boolean RegisterAdminSubInfo(@Param("adminInfo") AdminInfo adminInfo);
+
+    /**
+     * 根据当前用户获取用户信息
+     *
+     * @Params: [id]
+     * @Return: com.cnpc.server.pojo.AdminInfo
+     * @Author: yangg19
+     * @UpdateTime: 2022/2/10 16:09
+     * @Throws:
+     */
+    AdminInfo getAdminInfoById(Integer id);
 }

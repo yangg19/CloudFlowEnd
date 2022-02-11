@@ -101,4 +101,19 @@ public class AdminInfoServiceImpl extends ServiceImpl<AdminInfoMapper, AdminInfo
         }
         return RespBean.error("");
     }
+
+    /**
+     * 根据当前用户获取用户信息
+     *
+     * @Params: []
+     * @Return: com.cnpc.server.pojo.RespPageBean
+     * @Author: yangg19
+     * @UpdateTime: 2022/2/10 15:51
+     * @Throws:
+     */
+    @Override
+    public AdminInfo getAdminInfoById() {
+
+        return adminInfoMapper.getAdminInfoById(AdminUtils.getCurrentAdmin().getId());
+    }
 }

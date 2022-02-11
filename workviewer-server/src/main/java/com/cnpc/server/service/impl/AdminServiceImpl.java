@@ -248,19 +248,25 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
     }
 
     @Override
-    public RespBean findPasswordByProtect(String passAnswer, String pass, Integer adminId) {
-        Admin admin = adminMapper.selectById(adminId);
+    public RespBean findPasswordByProtect(String passQuestion, String passAnswer, String pass, String username) {
+        Admin admin = adminMapper.selectOne(new QueryWrapper<Admin>().eq("username", username).eq("enabled", true));
+        System.out.println(username);
+        System.out.println(admin);
         // 密码加密
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        System.out.println(admin.getPassAnswer());
-        System.out.println(passAnswer);
-        if (passAnswer.equals(admin.getPassAnswer())) {
+        if (passAnswer.equals(admin.getPassAnswer()) && passQuestion.equals(admin.getPassQuestion())) {
+            System.out.println("进入加密");
+
             admin.setPassword(encoder.encode(pass));
+            System.out.println(admin);
+
             int result = adminMapper.updateById(admin);
             if(1==result) {
                 return RespBean.success("修改成功！");
             }
         }
+        System.out.println("结束");
+
         return RespBean.error("密码保护不正确，请重新输入！");
     }
 

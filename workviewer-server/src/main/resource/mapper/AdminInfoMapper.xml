@@ -24,7 +24,7 @@
         <result column="specialty" property="specialty" />
         <result column="school" property="school" />
         <result column="username" property="username" />
-
+        <result column="userFace" property="userFace" />
     </resultMap>
 
     <resultMap id="AdminInfo" type="com.cnpc.server.pojo.AdminInfo" extends="BaseResultMap">
@@ -135,6 +135,31 @@
             AND a.id = #{id}
         </if>
         ORDER BY a.id
+    </select>
+
+    <select id="getAdminInfoById" resultMap="AdminInfo">
+        SELECT
+            a.*,
+            n.id AS nid,
+            n.`name` AS nname,
+            p.id AS pid,
+            p.`name` AS pname,
+            j.id AS jid,
+            j.`name` AS jname,
+            pos.id AS posid,
+            pos.`name` AS posname
+        FROM
+            t_admin a,
+            t_nation n,
+            t_politics_status p,
+            t_joblevel j,
+            t_position pos
+        WHERE
+            a.nationId = n.id
+          AND a.politicId = p.id
+          AND a.jobLevelId = j.id
+          AND a.posId = pos.id
+          AND a.id = #{id}
     </select>
 
 </mapper>

@@ -45,6 +45,14 @@ public interface AdminMapper extends BaseMapper<Admin> {
      */
     List<Admin> getAllAdmin(@Param("keywords") String keywords);
 
-    String getAdminName(Integer id);
-
+    /**
+     * 获取用户名
+     *
+     * @Params: [id]
+     * @Return: java.lang.String
+     * @Author: yangg19
+     * @UpdateTime: 2022/2/10 13:26
+     * @Throws:
+     */
+    String getAdminName(@Param("id") Integer id);
 }

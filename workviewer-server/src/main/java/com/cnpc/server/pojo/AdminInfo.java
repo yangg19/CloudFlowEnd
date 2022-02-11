@@ -130,4 +130,7 @@ public class AdminInfo implements Serializable {
 
     @ApiModelProperty(value = "用户名")
     private String username;
+
+    @ApiModelProperty(value = "用户头像")
+    private String userFace;
 }

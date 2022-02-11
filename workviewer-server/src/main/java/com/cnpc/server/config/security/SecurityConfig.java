@@ -51,9 +51,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers(
                 "/login",
                 "/logout",
-                "/findPass",
+                "/find-pass",
                 "/register",
-                "/registerSub",
+                "/register-sub",
+                "/pass-pro-info",
                 "/css/**",
                 "/js/**",
                 "/index.html",
