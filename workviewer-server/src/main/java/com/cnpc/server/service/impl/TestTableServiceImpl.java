@@ -19,7 +19,7 @@ import java.util.List;
  * @since 2021-11-29
  */
 @Service
-@DS("testSql")
+@DS("testsql")
 public class TestTableServiceImpl extends ServiceImpl<TestTableMapper, TestTable> implements ITestTableService {
 
     @Autowired

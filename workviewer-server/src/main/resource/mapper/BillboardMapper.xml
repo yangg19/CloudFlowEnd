@@ -5,16 +5,12 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.cnpc.server.pojo.Billboard">
         <id column="id" property="id" />
-        <result column="noticeContent1" property="noticeContent1" />
-        <result column="noticeContent2" property="noticeContent2" />
-        <result column="noticeContent3" property="noticeContent3" />
-
-        <result column="creatDate" property="creatDate" />
+        <result column="noticeContent" property="noticeContent" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, noticeContent, creatDate
+        id, noticeContent
     </sql>
 
 </mapper>

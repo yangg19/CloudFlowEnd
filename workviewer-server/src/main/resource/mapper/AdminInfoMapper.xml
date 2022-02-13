@@ -87,6 +87,7 @@
         AND a.politicId = p.id
         AND a.jobLevelId = j.id
         AND a.posId = pos.id
+        AND a.id != 1
         <if test="null!=adminInfo.name and ''!=adminInfo.name">
             AND a.`name` LIKE CONCAT('%',#{adminInfo.name},'%')
         </if>

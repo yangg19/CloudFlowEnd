@@ -28,15 +28,6 @@ public class Billboard implements Serializable {
     @ApiModelProperty(value = "序号")
     private Integer id;
 
-    @ApiModelProperty(value = "公告内容第一段")
-    private String noticeContent1;
-
-    @ApiModelProperty(value = "公告内容第二段")
-    private String noticeContent2;
-
-    @ApiModelProperty(value = "公告内容第三段")
-    private String noticeContent3;
-
-    @ApiModelProperty(value = "创建时间")
-    private LocalDate creatDate;
+    @ApiModelProperty(value = "公告内容")
+    private String noticeContent;
 }

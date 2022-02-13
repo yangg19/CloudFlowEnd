@@ -235,8 +235,8 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
     @Override
     public RespBean updatePasswordProtect(String passQuestion, String passAnswer, Integer adminId) {
         Admin admin = adminMapper.selectById(adminId);
-        admin.setPassword(passQuestion);
-        admin.setPassword(passAnswer);
+        admin.setPassQuestion(passQuestion);
+        admin.setPassAnswer(passAnswer);
 
         // 设置密码保护
         int result = adminMapper.updateById(admin);

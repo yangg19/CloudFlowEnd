@@ -2,15 +2,15 @@ package com.cnpc.server.controller;
 
 
 import com.cnpc.server.pojo.Billboard;
+import com.cnpc.server.pojo.RespBean;
 import com.cnpc.server.pojo.Role;
 import com.cnpc.server.service.IBillboardService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -31,5 +31,14 @@ public class BillboardController {
     @GetMapping("/")
     public Billboard getAllRoles() {
         return billboardService.list().get(0);
+    }
+
+    @ApiOperation(value = "更新公告信息")
+    @PutMapping("/")
+    public RespBean findPasswordByProtect(@RequestBody Billboard billboard) {
+        if (billboardService.updateById(billboard)) {
+            return RespBean.success("更新成功！");
+        }
+        return RespBean.error("更新失败！");
     }
 }

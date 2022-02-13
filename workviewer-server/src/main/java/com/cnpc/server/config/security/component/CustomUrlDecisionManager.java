@@ -43,7 +43,9 @@ public class CustomUrlDecisionManager implements AccessDecisionManager {
                 }
             }
         }
-        throw new AccessDeniedException("权限不足，请联系管理员");
+//        throw new AccessDeniedException("权限不足，请联系管理员");
+//        throw new AccessDeniedException("");
+
     }
 
     @Override

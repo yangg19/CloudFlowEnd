@@ -25,6 +25,7 @@ import java.util.Map;
  */
 @Api(tags = "LoginController")
 @RestController
+@CrossOrigin
 public class LoginController {
 
     @Autowired
