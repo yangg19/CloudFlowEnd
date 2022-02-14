@@ -11,9 +11,9 @@ import java.util.Date;
 public class MyTask {
     @Autowired
     private ITodolistService todolistService;
-    @Scheduled(cron = "*/5 * * * * ?") // 每隔5秒钟执行一次
+//    @Scheduled(cron = "*/5 * * * * ?") // 每隔5秒钟执行一次
 
-//    @Scheduled(cron = "0 0 0/1 * * ?") // 每隔整点执行一次
+    @Scheduled(cron = "0 0 0/1 * * ?") // 每隔整点执行一次
     public void firstTask() {
         System.out.println(new Date() + ":这是第1个定时任务");
         todolistService.updateTaskStatus(new Date());
