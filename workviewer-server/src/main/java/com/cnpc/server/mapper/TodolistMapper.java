@@ -102,5 +102,5 @@ public interface TodolistMapper extends BaseMapper<Todolist> {
 
     List<Todolist> getAllLastTodolist(@Param("startDate") String startDate, @Param("endDate") String endDate);
 
-    void updateTaskStatus(@Param("date") Date date);
+    void updateTaskStatus(@Param("format") String format);
 }

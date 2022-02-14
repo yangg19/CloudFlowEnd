@@ -103,9 +103,9 @@
 --             t.postCount =  t.postCount + 1,
 --             t.planTime = DATE_ADD(t.planTime,INTERVAL 1 WEEK)
         WHERE
-            t.taskStatusID != '完成'
+            t.taskStatusID = '进行中'
         AND
-            t.planTime &lt; #{date}
+            t.planTime &lt; #{format}
     </update>
 
     <!--查询所有人新建/进行中/逾期待办-->

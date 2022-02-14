@@ -252,6 +252,9 @@ public class TodolistServiceImpl extends ServiceImpl<TodolistMapper, Todolist> i
 
     @Override
     public void updateTaskStatus(Date date) {
-        todolistMapper.updateTaskStatus(date);
+        System.out.println(date);
+
+        String format = new SimpleDateFormat("yyyy-MM-dd").format(date);
+        todolistMapper.updateTaskStatus(format);
     }
 }
