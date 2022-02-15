@@ -98,14 +98,6 @@ public interface IAdminService extends IService<Admin> {
      */
     List<Admin> getAllAdmin(String keywords);
 
-    /**
-     * 更新用户头像
-     * @param url
-     * @param id
-     * @param authentication
-     * @return
-     */
-    RespBean updateAdminUserFace(String url, Integer id, Authentication authentication);
 
     /**
      * 获取用户姓名

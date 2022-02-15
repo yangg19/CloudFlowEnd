@@ -14,8 +14,8 @@ spring:
           url: jdbc:mysql://localhost:3306/teampark?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
           username: root
 #          password: root
-          password: Pys931017@
-#          password: 931017
+#          password: Pys931017@
+          password: 931017
           hikari:
             # 连接池名
             pool-name: DateHikariCP
@@ -38,8 +38,8 @@ spring:
           url: jdbc:mysql://localhost:3306/testsql?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
           username: root
 #          password: root
-          password: Pys931017@
-#          password: 931017
+#          password: Pys931017@
+          password: 931017
           hikari:
             # 连接池名
             pool-name: DateHikariCP

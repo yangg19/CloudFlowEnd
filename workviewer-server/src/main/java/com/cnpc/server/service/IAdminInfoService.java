@@ -73,4 +73,15 @@ public interface IAdminInfoService extends IService<AdminInfo> {
      * @Throws:
      */
     AdminInfo getAdminInfoById();
+
+    /**
+     * 更新用户头像
+     *
+     * @Params: [fileName]
+     * @Return: com.cnpc.server.pojo.RespBean
+     * @Author: yangg19
+     * @UpdateTime: 2022/2/15 9:30
+     * @Throws:
+     */
+    RespBean updateAvatar(String fileName);
 }

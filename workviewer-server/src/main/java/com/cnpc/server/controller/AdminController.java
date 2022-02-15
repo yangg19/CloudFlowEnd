@@ -7,14 +7,20 @@ import com.cnpc.server.service.IRoleService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * <p>
- *  操作员管理
+ * 操作员管理
  * </p>
  *
  * @author yangg19
@@ -90,3 +96,4 @@ public class AdminController {
         return adminService.updatePasswordProtect(passQuestion, passAnswer, adminId);
     }
 }
+

@@ -15,10 +15,14 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.util.Calendar;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * <p>
@@ -164,5 +168,54 @@ public class AdminInfoController {
             e.printStackTrace();
         }
         return RespBean.error("导入失败！");
+    }
+
+    @ApiOperation(value = "导入头像")
+    @PostMapping("/uploadAvatar")
+    public RespBean uploadPic(@RequestParam(value = "file", required = false) MultipartFile file, HttpServletRequest request) throws IOException {
+        //目前这里是写死的本地硬盘路径
+        String path = "C:/Users/Administrator/WebstormProjects/cloudflow/src/img/avatar";
+        System.out.println("path:" + path);
+        System.out.println("path:" + path);
+        System.out.println("path:" + path);
+        System.out.println("path:" + path);
+        System.out.println("path:" + path);
+        System.out.println("path:" + path);
+        System.out.println("path:" + path);
+
+        //获取文件名称
+        String fileName = file.getOriginalFilename();
+        //获取文件名后缀
+        Calendar currTime = Calendar.getInstance();
+        String time = String.valueOf(currTime.get(Calendar.YEAR)) + String.valueOf((currTime.get(Calendar.MONTH) + 1));
+        //获取文件名后缀
+        String suffix = fileName.substring(file.getOriginalFilename().lastIndexOf("."));
+        suffix = suffix.toLowerCase();
+        if (suffix.equals(".jpg") || suffix.equals(".jpeg") || suffix.equals(".png")/* || suffix.equals(".gif")*/) {
+            fileName = UUID.randomUUID().toString() + suffix;
+            File targetFile = new File(path, fileName);
+            if (!targetFile.getParentFile().exists()) {    //注意，判断父级路径是否存在
+                targetFile.getParentFile().mkdirs();
+            }
+            long size = 0;
+            //保存
+            try {
+                file.transferTo(targetFile);
+                size = file.getSize();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return RespBean.error("上传失败！");
+            }
+            System.out.println(fileName);
+            System.out.println(fileName);
+            System.out.println(fileName);
+            System.out.println(fileName);
+            System.out.println(fileName);
+            System.out.println(fileName);
+
+            return adminInfoService.updateAvatar(fileName);
+        } else {
+            return RespBean.error("图片格式有误，请上传.jpg、.png、.jpeg格式的文件");
+        }
     }
 }

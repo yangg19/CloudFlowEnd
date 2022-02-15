@@ -64,5 +64,16 @@ public interface AdminInfoMapper extends BaseMapper<AdminInfo> {
      * @UpdateTime: 2022/2/10 16:09
      * @Throws:
      */
-    AdminInfo getAdminInfoById(Integer id);
+    AdminInfo getAdminInfoById(@Param("id") Integer id);
+
+    /**
+     * 更新用户头像
+     *
+     * @Params: [id, fileName]
+     * @Return: boolean
+     * @Author: yangg19
+     * @UpdateTime: 2022/2/15 9:33
+     * @Throws:
+     */
+    boolean updateAvatar(@Param("id") Integer id, @Param("fileName") String fileName);
 }

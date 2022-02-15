@@ -62,6 +62,13 @@
         WHERE
             workID = #{adminInfo.workID}
     </update>
+    <!--更新用户头像-->
+    <update id="updateAvatar">
+        UPDATE t_admin
+        SET userFace = #{fileName}
+        WHERE
+            id = #{id}
+    </update>
 
 
     <!-- 获取所有员工（分页）-->

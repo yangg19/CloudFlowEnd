@@ -116,4 +116,21 @@ public class AdminInfoServiceImpl extends ServiceImpl<AdminInfoMapper, AdminInfo
 
         return adminInfoMapper.getAdminInfoById(AdminUtils.getCurrentAdmin().getId());
     }
+
+    /**
+     * 更新用户头像
+     *
+     * @Params: [fileName]
+     * @Return: com.cnpc.server.pojo.RespBean
+     * @Author: yangg19
+     * @UpdateTime: 2022/2/15 9:31
+     * @Throws:
+     */
+    @Override
+    public RespBean updateAvatar(String fileName) {
+        if (adminInfoMapper.updateAvatar(AdminUtils.getCurrentAdmin().getId(), fileName)) {
+            return RespBean.success("更新成功");
+        }
+        return RespBean.error("更新失败");
+    }
 }
