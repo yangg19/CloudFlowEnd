@@ -10,6 +10,7 @@
         <result column="taskScore" property="taskScore" />
         <result column="postCount" property="postCount" />
         <result column="planTime" property="planTime" />
+        <result column="comTime" property="comTime" />
         <result column="taskStatusID" property="taskStatusID" />
         <result column="taskDetails" property="taskDetails" />
     </resultMap>
@@ -23,7 +24,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, userID, todoTask, taskScore, postCount, planTime, taskStatusID, taskDetails
+        id, userID, todoTask, taskScore, postCount, planTime, comTime, taskStatusID, taskDetails
     </sql>
 
     <!--查询完成或删除待办-->
@@ -41,7 +42,7 @@
             t.userID = a.id
           AND
             t.userID = #{userID}
-        AND
+          AND
             t.taskStatusID = #{taskStatusID}
         ORDER BY t.planTime
     </select>
@@ -63,19 +64,19 @@
             t.userID = #{userID}
           AND
             (
-            t.taskStatusID = '新建'
-          OR
-            t.taskStatusID = '进行中'
-          OR
-            t.taskStatusID = '逾期'
-            )
+                    t.taskStatusID = '新建'
+                    OR
+                    t.taskStatusID = '进行中'
+                    OR
+                    t.taskStatusID = '逾期'
+                )
         ORDER BY t.taskStatusID DESC, t.planTime
     </select>
 
     <!--完成待办-->
     <update id="comTaskById" statementType="CALLABLE">
         UPDATE todolist
-        SET taskStatusID = '完成'
+        SET taskStatusID = '完成', comTime = CURRENT_DATE
         WHERE
             id = #{id}
     </update>
@@ -104,7 +105,7 @@
 --             t.planTime = DATE_ADD(t.planTime,INTERVAL 1 WEEK)
         WHERE
             t.taskStatusID = '进行中'
-        AND
+          AND
             t.planTime &lt; #{format}
     </update>
 
@@ -123,12 +124,12 @@
             t.userID = a.id
           AND
             (
-            t.taskStatusID = '新建'
-          OR
-            t.taskStatusID = '进行中'
-          OR
-            t.taskStatusID = '逾期'
-            )
+                    t.taskStatusID = '新建'
+                    OR
+                    t.taskStatusID = '进行中'
+                    OR
+                    t.taskStatusID = '逾期'
+                )
         ORDER BY t.userID, t.taskStatusID DESC, t.planTime
     </select>
 
@@ -162,9 +163,9 @@
             t_admin a
         WHERE
             t.userID = a.id
-        AND
-            (t.planTime BETWEEN #{startDate} AND  #{endDate} OR t.taskStatusID = '逾期')
-        AND
+          AND
+            ((t.planTime BETWEEN #{startDate} AND  #{endDate} OR t.taskStatusID = '逾期') OR (t.comTime BETWEEN #{startDate} AND  #{endDate}))
+          AND
             taskStatusID != '删除'
         ORDER BY t.userID, t.taskStatusID DESC
     </select>
@@ -182,7 +183,7 @@
         WHERE
             t.userID = a.id
           AND
-            t.planTime BETWEEN #{startDate} AND  #{endDate}
+            (t.comTime BETWEEN #{startDate} AND  #{endDate}) OR ((t.planTime BETWEEN #{startDate} AND  #{endDate}) AND t.taskStatusID = '逾期')
           AND
             taskStatusID != '删除'
         ORDER BY t.userID, t.taskStatusID DESC

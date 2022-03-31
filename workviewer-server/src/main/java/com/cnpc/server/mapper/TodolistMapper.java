@@ -42,7 +42,7 @@ public interface TodolistMapper extends BaseMapper<Todolist> {
      * @Throws:
      */
     IPage<Todolist> getInitTodolistByPage(Page<Todolist> page, @Param("userID") Integer userID, @Param("beginDateScope") LocalDate[] beginDateScope);
-    
+
     /**
      * 完成待办
      *
@@ -50,7 +50,7 @@ public interface TodolistMapper extends BaseMapper<Todolist> {
      * @Return: boolean
      * @Author: yangg19
      * @UpdateTime: 2022/1/27 15:24 
-     * @Throws: 
+     * @Throws:
      */
     boolean comTaskById(@Param("id") Integer id);
 

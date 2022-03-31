@@ -18,7 +18,7 @@ import java.time.LocalDate;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author yangg19
@@ -58,6 +58,11 @@ public class Todolist implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     private LocalDate planTime;
 
+    @ApiModelProperty(value = "完成时间")
+    @Excel(name = "完成时间", width = 20)
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
+    private LocalDate comTime;
+
     @ApiModelProperty(value = "待办状态")
     @Excel(name = "待办状态")
     private String taskStatusID;
@@ -67,7 +72,6 @@ public class Todolist implements Serializable {
     private Integer taskScore;
 
     @ApiModelProperty(value = "延期次数")
-    @Excel(name = "延期次数")
     private Integer postCount;
 
 }

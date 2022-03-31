@@ -182,11 +182,9 @@ public class TodolistServiceImpl extends ServiceImpl<TodolistMapper, Todolist> i
 
         startDate = df.format(c.getTime());
         c.add(Calendar.DATE, 6);
-        endDate = df.format(c.getTime());
+//        endDate = df.format(c.getTime());
+        endDate = "2999-01-01";
         System.out.println(startDate + ',' + endDate);
-
-//        System.out.println("Start Date = " + startDate);
-//        System.out.println("End Date = " + endDate);
         return todolistMapper.getAllTodolist(startDate, endDate);
     }
 
@@ -203,6 +201,8 @@ public class TodolistServiceImpl extends ServiceImpl<TodolistMapper, Todolist> i
         startDate = df.format(c.getTime());
         c.add(Calendar.DATE, 6);
         endDate = df.format(c.getTime());
+//        endDate = "2021-01-01";
+
         return todolistMapper.getAllLastTodolist(startDate, endDate);
     }
 
